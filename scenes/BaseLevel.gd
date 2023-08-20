@@ -16,8 +16,6 @@ func _ready():
 	register_player($PlayerRoot/Player)
 	coin_total_changed(get_tree().get_nodes_in_group("coin").size())
 
-	$Flag.connect("player_won", self, "on_player_won")
-
 func _unhandled_input(event):
 	if (event.is_action_pressed("pause")):
 		var pauseInstance = pauseScene.instance()
