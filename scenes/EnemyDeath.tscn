@@ -1,6 +1,6 @@
 [gd_scene load_steps=22 format=2]
 
-[ext_resource path="res://assets/enemy/enemy_exploding.png" type="Texture" id=1]
+[ext_resource path="res://assets/enemy/bomb_death.png" type="Texture" id=1]
 [ext_resource path="res://assets/effects/particles.png" type="Texture" id=2]
 [ext_resource path="res://scenes/EnemyDeath.gd" type="Script" id=3]
 [ext_resource path="res://assets/sounds/impactMetal_heavy_000.ogg" type="AudioStream" id=4]

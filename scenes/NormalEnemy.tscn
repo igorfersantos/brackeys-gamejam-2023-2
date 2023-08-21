@@ -1,9 +1,9 @@
 [gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://assets/enemy/character_0015.png" type="Texture" id=1]
-[ext_resource path="res://assets/enemy/character_0016.png" type="Texture" id=2]
+[ext_resource path="res://assets/enemy/bomb_walk2.png" type="Texture" id=1]
+[ext_resource path="res://assets/enemy/bomb_walk1.png" type="Texture" id=2]
 [ext_resource path="res://scenes/NormalEnemy.gd" type="Script" id=3]
-[ext_resource path="res://assets/enemy/character_0017.png" type="Texture" id=4]
+[ext_resource path="res://assets/enemy/bomb_spawn.png" type="Texture" id=4]
 
 [sub_resource type="Animation" id=7]
 resource_name = "default"
@@ -117,7 +117,7 @@ extents = Vector2( 5, 6 )
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 1 ), ExtResource( 2 ) ],
+"frames": [ ExtResource( 2 ), ExtResource( 1 ) ],
 "loop": true,
 "name": "run",
 "speed": 10.0
@@ -159,7 +159,8 @@ shape = SubResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Visuals"]
 frames = SubResource( 1 )
-animation = "spawn"
+animation = "run"
+frame = 1
 playing = true
 offset = Vector2( 0, -12 )
 
@@ -170,7 +171,6 @@ collision_mask = 4194304
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HazardArea"]
 shape = SubResource( 4 )
-disabled = true
 
 [node name="HitboxArea" type="Area2D" parent="."]
 position = Vector2( 0, -8 )
@@ -179,4 +179,3 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxArea"]
 shape = SubResource( 5 )
-disabled = true
