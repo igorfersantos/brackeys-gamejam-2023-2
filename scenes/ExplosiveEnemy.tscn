@@ -153,6 +153,7 @@ scale = Vector2( 1.2, 1.2 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Visuals"]
 frames = SubResource( 1 )
 animation = "run"
+frame = 1
 playing = true
 offset = Vector2( 0, -12 )
 
@@ -181,5 +182,5 @@ collision_mask = 0
 shape = SubResource( 5 )
 
 [node name="ExplodeTimer" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 6.0
 autostart = true
