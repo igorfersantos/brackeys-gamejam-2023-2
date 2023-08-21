@@ -8,7 +8,6 @@
 [ext_resource path="res://scenes/EnemySpawner.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/TutorialSign.tscn" type="PackedScene" id=7]
 
-
 [node name="Level_001" instance=ExtResource( 2 )]
 
 [node name="TileMap" parent="." index="2"]
@@ -24,9 +23,6 @@ tile_data = PoolIntArray( -1114088, 1, 1, -1114087, 1, 2, -1114086, 1, 2, -11140
 position = Vector2( 44, 1 )
 text = "Use WASD to move!
 use SPACE to jump!"
-
-[node name="Flag" parent="." index="6"]
-position = Vector2( 927, 243 )
 
 [node name="Coin" parent="Collectibles" index="0" instance=ExtResource( 3 )]
 position = Vector2( 72, -45 )
@@ -284,4 +280,3 @@ position = Vector2( 882, 288 )
 
 [node name="EnemySpawner" parent="Enemies" index="21" instance=ExtResource( 6 )]
 position = Vector2( 117, 0 )
-startDirection = 1
