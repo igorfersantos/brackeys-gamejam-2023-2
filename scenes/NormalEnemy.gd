@@ -13,7 +13,9 @@ var direction = Vector2.ZERO
 var gravity = 500
 
 func _ready():
-	direction = get_start_direction()
+	# Note that this will be overwritten in EnemySpawners!
+	direction = get_start_direction() 
+	
 	$GoalDetector.connect("area_entered", self, "on_goal_entered")
 	$HitboxArea.connect("area_entered", self, "on_hitbox_entered")
 

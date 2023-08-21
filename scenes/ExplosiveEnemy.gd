@@ -1,4 +1,4 @@
-extends "res://scenes/Enemy.gd"
+extends "res://scenes/NormalEnemy.gd"
 
 const RADIUS = 40
 const RAY_CASTS = 200

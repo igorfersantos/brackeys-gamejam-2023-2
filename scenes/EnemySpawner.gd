@@ -17,7 +17,7 @@ func get_start_direction():
 
 func spawn_enemy():
 	currentEnemyNode = enemyScene.instance()
-	currentEnemyNode.startDirection = get_start_direction()
+	currentEnemyNode.direction = get_start_direction()
 	currentEnemyNode.global_position = global_position
 	get_parent().add_child(currentEnemyNode)
 
