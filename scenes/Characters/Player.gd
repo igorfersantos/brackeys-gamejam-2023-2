@@ -51,7 +51,7 @@ func change_state(newState):
 
 func process_normal(delta):
 	if (isStateNew):
-		$DashParticles.emitting = false
+		$Visuals/DashParticles.emitting = false
 		$DashArea/CollisionShape2D.disabled = true
 		$HitboxArea.collision_mask = defaultHazardMask
 
@@ -98,7 +98,7 @@ func process_normal(delta):
 func process_dash(delta):
 	if (isStateNew):
 		$DashAudioPlayer.play()
-		$DashParticles.emitting = true
+		$Visuals/DashParticles.emitting = true
 		$"/root/Helpers".apply_camera_snake(.75)
 		$DashArea/CollisionShape2D.disabled = false
 		$HitboxArea.collision_mask = dashHazardMask
