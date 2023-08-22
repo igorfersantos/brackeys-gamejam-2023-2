@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 signal died
 
-var playerDeathScene = preload("res://scenes/PlayerDeath.tscn")
+var playerDeathScene = preload("res://scenes/Characters/PlayerDeath.tscn")
 var footstepParticles = preload("res://scenes/FootstepParticles.tscn")
 
 enum State { NORMAL, DASHING, INPUT_DISABLED }

@@ -4,7 +4,8 @@
 [ext_resource path="res://scenes/GameCamera.gd" type="Script" id=2]
 [ext_resource path="res://resources/tileset.tres" type="TileSet" id=3]
 [ext_resource path="res://resources/decorative_tileset.tres" type="TileSet" id=4]
-[ext_resource path="res://scenes/Clouds.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/Levels/Background/Clouds.tscn" type="PackedScene" id=5]
+
 
 [sub_resource type="OpenSimplexNoise" id=1]
 seed = 4378

@@ -4,7 +4,7 @@ signal coin_total_changed(totalCoins, collectedCoins)
 
 export(PackedScene) var levelCompleteScene 
 
-var playerScene = preload("res://scenes/Player.tscn")
+var playerScene = preload("res://scenes/Characters/Player.tscn")
 var pauseScene = preload("res://scenes/UI/PauseMenu.tscn")
 var spawnPosition = Vector2.ZERO
 var currentPlayerNode = null

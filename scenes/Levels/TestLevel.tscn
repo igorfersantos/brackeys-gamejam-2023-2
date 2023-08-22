@@ -2,7 +2,8 @@
 
 [ext_resource path="res://scenes/BaseLevel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/UI/PlayerLife.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/EnemySpawner.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/Levels/Utils/EnemySpawner.tscn" type="PackedScene" id=4]
+
 
 [node name="BaseLevel" instance=ExtResource( 1 )]
 
