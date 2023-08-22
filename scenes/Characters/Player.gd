@@ -16,7 +16,7 @@ export var maxDashSpeed = 500
 export var minDashSpeed = 200
 export var horizontalAcceleration = 1000
 export var jumpSpeed = 300
-export var jumpFallGravityMultiplier = 3
+export var jumpFallGravityMultiplier: float = 3
 
 var hasDoubleJump = false
 var hasDash = false
