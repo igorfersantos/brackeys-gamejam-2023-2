@@ -10,7 +10,7 @@ var explosiveEnemyDeathScene = preload("res://scenes/Characters/ExplosiveEnemyDe
 
 export var is_spawning = true
 export var is_dying = false
-var maxSpeed = 25
+var maxSpeed = 85
 var velocity = Vector2.ZERO
 var direction = Vector2.ZERO
 var gravity = 500
