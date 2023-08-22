@@ -1,29 +1,16 @@
 extends "res://scenes/NormalEnemy.gd"
 
-const RADIUS = 40
-const RAY_CASTS = 200
+export var bomb_radius:int = 40
+export(int, LAYERS_2D_PHYSICS) var bomb_mask
 
-var explosion_ray = preload("res://scenes/ExplosionRay.tscn")
 
-func _ready():
-	#set_process(false)
-	$ExplodeTimer.connect("timeout", self, "on_explode_timer_timeout")
+func kill():
+	var deathInstance = explosiveEnemyDeathScene.instance()
+	deathInstance.global_position = global_position
+	deathInstance.bomb_mask = bomb_mask
+	deathInstance.bomb_radius = bomb_radius
+	get_parent().add_child(deathInstance)
+	if (velocity.x > 0):
+		deathInstance.scale = Vector2(-1, 1)
 
-func spawn_rays():
-	var i = 0
-	var rotation = 0.0
-	var instance = null
-	while i < RAY_CASTS:
-		rotation = float(i) * 360.0 / float(RAY_CASTS)
-		rotation = deg2rad(rotation)
-		instance = explosion_ray.instance()
-		instance.init(Vector2(cos(rotation), sin(rotation)) * RADIUS, position)
-		get_parent().add_child(instance)
-		i += 1
-
-func explode():
-	spawn_rays()
 	queue_free()
-
-func on_explode_timer_timeout():
-	explode()

@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="2d-platformer-game"
-run/main_scene="res://scenes/Levels/TestLevel.tscn"
+run/main_scene="res://scenes/Levels/TestLevel2.tscn"
 boot_splash/image="res://icon.png"
 boot_splash/fullsize=false
 boot_splash/use_filter=false
@@ -39,6 +39,10 @@ window/size/test_width=1280
 window/size/test_height=720
 window/stretch/mode="viewport"
 window/stretch/aspect="keep_height"
+
+[global]
+
+max_remote_stdout_chars_per_second=false
 
 [gui]
 
@@ -113,10 +117,15 @@ click={
 
 2d_physics/layer_1="TERRAIN"
 2d_physics/layer_2="ENEMY"
+2d_physics/layer_3="PLAYER"
 2d_physics/layer_21="ENEMY_HAZARD"
 2d_physics/layer_22="ENEMY_GOAL"
 2d_physics/layer_23="HAZARD"
 2d_physics/layer_24="PICKUP"
+
+[network]
+
+limits/debugger_stdout/max_chars_per_second=40960
 
 [physics]
 

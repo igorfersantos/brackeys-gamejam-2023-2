@@ -14,7 +14,8 @@ func _ready():
 	$ExplosionTimer.connect("timeout", self, "on_explosion_timer_timeout")
 
 
-func init(cast, global_pos):
+func init(mask, cast, global_pos):
+	collision_mask = mask
 	cast_to = cast
 	position = global_pos
 	initialized = true
@@ -26,8 +27,9 @@ func _physics_process(delta):
 	if (!initialized or collider == null):
 		return
 	
-	if (collider.is_in_group("enemy")):
-		# do enemy logic here
+	if (collider.is_in_group("player")):
+		print("Collided with player")
+		collider.kill()
 		set_collision_mask_bit(0, false)
 		return
 	
