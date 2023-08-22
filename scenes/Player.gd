@@ -27,9 +27,9 @@ var defaultHazardMask = 0
 
 
 func _ready():
-	$HazardArea.connect("area_entered", self, "on_hazard_area_entered")
+	$HitboxArea.connect("area_entered", self, "on_hazard_area_entered")
 	$AnimatedSprite.connect("frame_changed", self, "on_animated_sprite_frame_changed")
-	defaultHazardMask = $HazardArea.collision_mask
+	defaultHazardMask = $HitboxArea.collision_mask
 
 
 func _process(delta):
@@ -52,7 +52,7 @@ func process_normal(delta):
 	if (isStateNew):
 		$DashParticles.emitting = false
 		$DashArea/CollisionShape2D.disabled = true
-		$HazardArea.collision_mask = defaultHazardMask
+		$HitboxArea.collision_mask = defaultHazardMask
 
 	var moveVector = get_movement_vector()
 
@@ -100,7 +100,7 @@ func process_dash(delta):
 		$DashParticles.emitting = true
 		$"/root/Helpers".apply_camera_snake(.75)
 		$DashArea/CollisionShape2D.disabled = false
-		$HazardArea.collision_mask = dashHazardMask
+		$HitboxArea.collision_mask = dashHazardMask
 		$AnimatedSprite.play("jump")
 		var velocityMod = 1 if $AnimatedSprite.flip_h else -1
 

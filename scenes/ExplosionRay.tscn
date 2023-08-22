@@ -5,8 +5,10 @@
 [node name="ExplosionRay" type="RayCast2D"]
 enabled = true
 cast_to = Vector2( 0, 9 )
+collide_with_areas = true
 script = ExtResource( 1 )
 
 [node name="ExplosionTimer" type="Timer" parent="."]
+wait_time = 0.2
 one_shot = true
 autostart = true

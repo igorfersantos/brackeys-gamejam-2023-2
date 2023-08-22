@@ -1,10 +1,12 @@
 extends KinematicBody2D
 
+signal dead
+
 enum Direction { RIGHT, LEFT }
 
 export(Direction) var startDirection
 
-var enemyDeathScene = preload("res://scenes/EnemyDeath.tscn")
+var explosiveEnemyDeathScene = preload("res://scenes/ExplosiveEnemyDeath.tscn")
 
 export var isSpawning = true
 var maxSpeed = 25
@@ -33,13 +35,15 @@ func _process(delta):
 
 	$Visuals/AnimatedSprite.flip_h = direction.x > 0
 
+
 func kill():
-	var deathInstance = enemyDeathScene.instance()
+	var deathInstance = explosiveEnemyDeathScene.instance()
 	get_parent().add_child(deathInstance)
 	deathInstance.global_position = global_position
 	if (velocity.x > 0):
 		deathInstance.scale = Vector2(-1, 1)
-
+	
+	emit_signal("dead")
 	queue_free()
 
 func on_goal_entered(_area2d):
