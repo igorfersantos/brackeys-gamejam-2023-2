@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://assets/player/fire_trai.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Characters/Player.gd" type="Script" id=2]
@@ -34,11 +34,11 @@ void fragment() {
 shader = SubResource( 7 )
 shader_param/baseColor = Color( 0.705882, 0.360784, 0.52549, 1 )
 
-[sub_resource type="Curve" id=9]
-_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.26738, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+[sub_resource type="Curve" id=14]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=10]
-curve = SubResource( 9 )
+[sub_resource type="CurveTexture" id=15]
+curve = SubResource( 14 )
 
 [sub_resource type="ParticlesMaterial" id=6]
 trail_divisor = 10
@@ -48,6 +48,34 @@ emission_ring_inner_radius = 0.1
 emission_ring_height = 1.0
 emission_ring_axis = Vector3( 0, 0, 1 )
 flag_disable_z = true
+direction = Vector3( 0, 1, 0 )
+spread = 180.0
+gravity = Vector3( 0, -500, 0 )
+initial_velocity = 50.0
+initial_velocity_random = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+damping_random = 0.21
+angle = -6.0
+scale_curve = SubResource( 15 )
+
+[sub_resource type="Gradient" id=11]
+offsets = PoolRealArray( 0.1841, 1 )
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture" id=12]
+gradient = SubResource( 11 )
+
+[sub_resource type="Curve" id=9]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.26738, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=10]
+curve = SubResource( 9 )
+
+[sub_resource type="ParticlesMaterial" id=13]
+emission_shape = 1
+emission_sphere_radius = 8.0
+flag_disable_z = true
 direction = Vector3( 1, -1, 0 )
 spread = 0.0
 gravity = Vector3( 20, -100, 0 )
@@ -56,8 +84,10 @@ initial_velocity_random = 1.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 damping_random = 0.21
-angle = -10.1
+angle = -6.0
+scale = 3.0
 scale_curve = SubResource( 10 )
+color_ramp = SubResource( 12 )
 
 [sub_resource type="CircleShape2D" id=3]
 radius = 16.0
@@ -94,6 +124,8 @@ height = 10.0
 collision_layer = 4
 script = ExtResource( 2 )
 dashHazardMask = 4194304
+gravity = 550
+jumpFallGravityMultiplier = 6
 
 [node name="FootstepAudioPlayer" parent="." instance=ExtResource( 7 )]
 
@@ -174,9 +206,8 @@ local_coords = false
 process_material = SubResource( 6 )
 texture = ExtResource( 16 )
 
-[node name="DashParticles2" type="Particles2D" parent="Visuals"]
+[node name="Flame" type="Particles2D" parent="Visuals"]
 show_behind_parent = true
-material = SubResource( 8 )
 position = Vector2( 0, -14 )
 amount = 10
 lifetime = 0.2
@@ -184,6 +215,27 @@ visibility_rect = Rect2( -1, -1, 1, 1 )
 local_coords = false
 process_material = SubResource( 6 )
 texture = ExtResource( 1 )
+
+[node name="Flame2" type="Particles2D" parent="Visuals"]
+show_behind_parent = true
+position = Vector2( 0, -14 )
+amount = 10
+lifetime = 0.1
+visibility_rect = Rect2( -1, -1, 1, 1 )
+local_coords = false
+process_material = SubResource( 6 )
+texture = ExtResource( 1 )
+
+[node name="FlameParticles" type="Particles2D" parent="Visuals"]
+visible = false
+show_behind_parent = true
+position = Vector2( 0, -11 )
+amount = 1
+lifetime = 0.6
+fract_delta = false
+visibility_rect = Rect2( -1, -1, 1, 1 )
+local_coords = false
+process_material = SubResource( 13 )
 
 [node name="CoyoteTimer" type="Timer" parent="."]
 wait_time = 0.15
@@ -213,10 +265,12 @@ animation = "idle"
 offset = Vector2( 0, -12 )
 
 [node name="BodyCollision" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( 0, -8 )
 shape = SubResource( 1 )
 
 [node name="DashArea" type="Area2D" parent="."]
+visible = false
 position = Vector2( 0, -11 )
 collision_layer = 0
 collision_mask = 2
