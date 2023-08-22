@@ -136,7 +136,6 @@ radius = 7.0
 [node name="ExplosiveEnemy" type="KinematicBody2D"]
 script = ExtResource( 1 )
 startDirection = 1
-bomb_radius = 9
 bomb_mask = 1048581
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -153,8 +152,7 @@ shape = SubResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Visuals"]
 frames = SubResource( 1 )
-animation = "spawn"
-frame = 1
+animation = "run"
 playing = true
 offset = Vector2( 0, -12 )
 
@@ -173,7 +171,6 @@ collision_mask = 4194304
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HazardArea"]
 shape = SubResource( 4 )
-disabled = true
 
 [node name="HitboxArea" type="Area2D" parent="."]
 position = Vector2( 0, -8 )
@@ -182,7 +179,6 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxArea"]
 shape = SubResource( 5 )
-disabled = true
 
 [node name="ExplosionTimer" type="Timer" parent="."]
 wait_time = 4.0
