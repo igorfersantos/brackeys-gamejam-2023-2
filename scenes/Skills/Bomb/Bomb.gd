@@ -40,10 +40,12 @@ func init(mask, strength, radius, location):
 
 func damage_cell(cell, tile_id):
 	if tile_id == 0:
-		tilemap.set_cellv(cell, 5)
-	elif tile_id == 5:
-		tilemap.set_cellv(cell, 4)
-	elif tile_id == 4:
+		tilemap.set_cellv(cell, 1)
+	elif tile_id == 1:
+		tilemap.set_cellv(cell, 2)
+	elif tile_id == 2:
+		tilemap.set_cellv(cell, 3)
+	elif tile_id == 3:
 		tilemap.set_cellv(cell, -1)
 	
 

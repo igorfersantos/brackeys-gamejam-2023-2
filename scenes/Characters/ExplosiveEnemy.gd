@@ -8,7 +8,7 @@ export(Direction) var startDirection
 
 var explosiveEnemyDeathScene = preload("res://scenes/Characters/ExplosiveEnemyDeath.tscn")
 
-export var isSpawning = true
+var isSpawning = true
 var maxSpeed = 25
 var velocity = Vector2.ZERO
 var direction = Vector2.ZERO
@@ -20,7 +20,7 @@ export var bomb_radius:int = 40
 export(int, LAYERS_2D_PHYSICS) var bomb_mask
 
 func _ready():
-		# Note that this will be overwritten in EnemySpawners!
+	# Note that this will be overwritten in EnemySpawners!
 	direction = startDirection
 	
 	$GoalDetector.connect("area_entered", self, "on_goal_entered")
@@ -29,6 +29,8 @@ func _ready():
 	$ExplosionTimer.connect("timeout", self, "on_explosion_timer_timeout")
 
 func _process(delta):
+	$Visuals/AnimatedSprite.flip_h = velocity.x > 0 || direction.x > 0
+	
 	if (isSpawning):
 		return
 	
@@ -37,7 +39,6 @@ func _process(delta):
 
 	velocity = move_and_slide(velocity, Vector2.UP)
 
-	$Visuals/AnimatedSprite.flip_h = direction.x > 0
 
 func kill():
 	var deathInstance = explosiveEnemyDeathScene.instance()
