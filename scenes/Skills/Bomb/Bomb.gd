@@ -9,6 +9,7 @@ var explosion_ray_scene = preload("res://scenes/Skills/Bomb/ExplosionRay.tscn")
 export(int, LAYERS_2D_PHYSICS) var bomb_mask
 export var bomb_strength = 1
 export var bomb_radius = 40
+export var paint_tiles = false
 var bomb_location = Vector2()
 
 var tilemap = null
@@ -16,20 +17,25 @@ var affected_tilemap_cell_by_ray:Dictionary = {}
 
 #debug
 #var debug_hits = false
-#var sucessful_rays_cast_to = []
+var sucessful_rays_cast_to = []
 
 func _ready():
 	tilemap = $"/root/Helpers".get_tilemap()
 
-# func _draw():
-# 	if !Engine.editor_hint:
-# 		return
-	
-	# to debug hits
-	# for ray in sucessful_rays_cast_to:
-	# 	draw_line(bomb_location, bomb_location + ray, Color.red)
+func _draw():
+	if !Engine.editor_hint:
+		return
 
-	#draw_circle(position, bomb_radius, Color(1, 1, 1, 0.5))
+	for ray in sucessful_rays_cast_to:
+		draw_line(bomb_location, bomb_location + ray, Color.red)
+
+	draw_circle(position, bomb_radius, Color(1, 1, 1, 0.5))
+
+func _process(delta):
+	if !Engine.editor_hint:
+		return
+	
+	update()
 
 func init(mask, strength, radius, location):
 	bomb_mask = mask
@@ -44,8 +50,10 @@ func damage_cell(cell, tile_id):
 	elif tile_id == 1:
 		tilemap.set_cellv(cell, 2)
 	elif tile_id == 2:
-		tilemap.set_cellv(cell, 3)
-	elif tile_id == 3:
+		tilemap.set_cellv(cell, -1)
+	# elif tile_id == 3:
+	# 	tilemap.set_cellv(cell, -1)
+	else:
 		tilemap.set_cellv(cell, -1)
 	
 
@@ -73,6 +81,8 @@ func explode():
 func on_ray_explosion_hit_cell(cell, tile_id, ray):
 	if tile_id == -1:
 		return
+	
+	sucessful_rays_cast_to.append(ray[0].cast_to)
 
 	if affected_tilemap_cell_by_ray.has(cell):
 		#Same cell but different raycast

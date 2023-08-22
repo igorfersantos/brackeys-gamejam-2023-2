@@ -8,7 +8,8 @@ export(Direction) var startDirection
 
 var explosiveEnemyDeathScene = preload("res://scenes/Characters/ExplosiveEnemyDeath.tscn")
 
-var isSpawning = true
+export var is_spawning = true
+export var is_dying = false
 var maxSpeed = 25
 var velocity = Vector2.ZERO
 var direction = Vector2.ZERO
@@ -31,7 +32,7 @@ func _ready():
 func _process(delta):
 	$Visuals/AnimatedSprite.flip_h = velocity.x > 0 || direction.x > 0
 	
-	if (isSpawning):
+	if (is_spawning):
 		return
 	
 	velocity.x = (direction * maxSpeed).x
@@ -41,11 +42,17 @@ func _process(delta):
 
 
 func kill():
+	if(is_dying):
+		return
+	
+	is_dying = true
+
 	var deathInstance = explosiveEnemyDeathScene.instance()
 	deathInstance.global_position = global_position
 	get_parent().add_child(deathInstance)
 	if (velocity.x > 0 || direction.x > 0):
 		deathInstance.scale = Vector2(-1, 1)
+	
 	
 	set_process(false)
 	set_physics_process(false)

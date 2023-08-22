@@ -24,7 +24,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 0, -8 ) ]
+"values": [ Vector2( 0, 0 ), Vector2( 0, -3 ) ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -135,6 +135,7 @@ collision_mask = 8388608
 shape = SubResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( 0, -8 )
+position = Vector2( 0, -0.954419 )
 frames = SubResource( 1 )
+frame = 1
 playing = true
