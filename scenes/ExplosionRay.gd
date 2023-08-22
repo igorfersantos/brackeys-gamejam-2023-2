@@ -1,6 +1,6 @@
 extends RayCast2D
 
-var strength = 1
+var strength = 3
 var collider = null
 var tilemap
 var cell = Vector2()

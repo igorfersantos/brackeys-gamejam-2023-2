@@ -5,6 +5,6 @@ func take_damage():
 	var last_life = lifes.pop_back()
 	last_life.queue_free ()
 
-func _unhandled_input(event):
-	if (event.is_action_pressed("jump")):
-		take_damage()
+#func _unhandled_input(event):
+#	if (event.is_action_pressed("jump")):
+#		take_damage()
