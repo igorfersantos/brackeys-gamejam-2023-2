@@ -1,13 +1,12 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://scenes/Characters/ExplosiveEnemy.gd" type="Script" id=1]
-[ext_resource path="res://assets/enemy/bomb_walk1_s.png" type="Texture" id=2]
-[ext_resource path="res://assets/enemy/bomb_spawn2.png" type="Texture" id=3]
-[ext_resource path="res://assets/enemy/bomb_spawn3.png" type="Texture" id=4]
-[ext_resource path="res://assets/enemy/bomb_spawn1.png" type="Texture" id=5]
-[ext_resource path="res://assets/enemy/bomb_walk2_s.png" type="Texture" id=6]
+[ext_resource path="res://scenes/ExplosiveEnemy.gd" type="Script" id=1]
+[ext_resource path="res://assets/enemy/bomb_walk2_s.png" type="Texture" id=2]
+[ext_resource path="res://assets/enemy/bomb_walk1_s.png" type="Texture" id=4]
+[ext_resource path="res://assets/enemy/bomb_spawn3.png" type="Texture" id=5]
 
 [sub_resource type="Animation" id=7]
+resource_name = "default"
 tracks/0/type = "value"
 tracks/0/path = NodePath("HazardArea/CollisionShape2D:disabled")
 tracks/0/interp = 1
@@ -58,6 +57,7 @@ tracks/3/keys = {
 }
 
 [sub_resource type="Animation" id=6]
+resource_name = "spawn"
 length = 0.75
 step = 0.05
 tracks/0/type = "value"
@@ -79,10 +79,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.35, 0.5 ),
+"times": PoolRealArray( 0, 0.2, 0.35 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 1.2, 1.2 ), Vector2( 1, 1 ) ]
+"values": [ Vector2( 0, 0 ), Vector2( 0.5, 1.2 ), Vector2( 1, 1 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("HazardArea/CollisionShape2D:disabled")
@@ -108,18 +108,30 @@ tracks/3/keys = {
 "update": 1,
 "values": [ true ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath("Visuals:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.2, 0.35 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 5 ), Vector2( 0, -2 ), Vector2( 0, 0 ) ]
+}
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 5, 6 )
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 2 ), ExtResource( 6 ) ],
+"frames": [ ExtResource( 4 ), ExtResource( 2 ) ],
 "loop": true,
 "name": "run",
 "speed": 10.0
 }, {
-"frames": [ ExtResource( 5 ), ExtResource( 3 ), ExtResource( 4 ) ],
+"frames": [ ExtResource( 5 ) ],
 "loop": true,
 "name": "spawn",
 "speed": 4.0
@@ -129,15 +141,12 @@ animations = [ {
 extents = Vector2( 5, 6 )
 
 [sub_resource type="CircleShape2D" id=4]
-radius = 7.0
+radius = 5.0
 
 [sub_resource type="CircleShape2D" id=5]
 
 [node name="ExplosiveEnemy" type="KinematicBody2D"]
 script = ExtResource( 1 )
-startDirection = 1
-bomb_radius = 9
-bomb_mask = 1048581
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "spawn"
@@ -150,11 +159,12 @@ position = Vector2( 0, -6 )
 shape = SubResource( 2 )
 
 [node name="Visuals" type="Node2D" parent="."]
+position = Vector2( 0, -2 )
+scale = Vector2( 0.5, 1.2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Visuals"]
 frames = SubResource( 1 )
 animation = "spawn"
-frame = 1
 playing = true
 offset = Vector2( 0, -12 )
 
@@ -184,7 +194,6 @@ collision_mask = 0
 shape = SubResource( 5 )
 disabled = true
 
-[node name="ExplosionTimer" type="Timer" parent="."]
-wait_time = 4.0
-one_shot = true
+[node name="ExplodeTimer" type="Timer" parent="."]
+wait_time = 2.0
 autostart = true
