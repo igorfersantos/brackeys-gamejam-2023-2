@@ -16,13 +16,10 @@ var gravity = 500
 
 func _ready():
 	# Note that this will be overwritten in EnemySpawners!
-	direction = get_start_direction() 
+	direction = startDirection
 	
 	$GoalDetector.connect("area_entered", self, "on_goal_entered")
 	$HitboxArea.connect("area_entered", self, "on_hitbox_entered")
-
-func get_start_direction():
-	return Vector2.RIGHT if startDirection == Direction.RIGHT else Vector2.LEFT
 
 func _process(delta):
 	if (isSpawning):
@@ -40,7 +37,7 @@ func kill():
 	var deathInstance = explosiveEnemyDeathScene.instance()
 	get_parent().add_child(deathInstance)
 	deathInstance.global_position = global_position
-	if (velocity.x > 0):
+	if (velocity.x > 0 || direction.x > 0):
 		deathInstance.scale = Vector2(-1, 1)
 	
 	emit_signal("dead")

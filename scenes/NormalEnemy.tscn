@@ -57,7 +57,7 @@ tracks/3/keys = {
 }
 
 [sub_resource type="Animation" id=6]
-resource_name = "spawn]"
+resource_name = "spawn"
 length = 0.75
 step = 0.05
 tracks/0/type = "value"
@@ -136,12 +136,13 @@ radius = 5.0
 [node name="NormalEnemy" type="KinematicBody2D"]
 collision_layer = 0
 script = ExtResource( 3 )
+isSpawning = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "spawn]"
+autoplay = "spawn"
 anims/default = SubResource( 7 )
-"anims/spawn]" = SubResource( 6 )
-"next/spawn]" = "default"
+anims/spawn = SubResource( 6 )
+next/spawn = "default"
 
 [node name="GoalDetector" type="Area2D" parent="."]
 collision_layer = 2097152
@@ -159,8 +160,7 @@ shape = SubResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Visuals"]
 frames = SubResource( 1 )
-animation = "run"
-frame = 1
+animation = "spawn"
 playing = true
 offset = Vector2( 0, -12 )
 
@@ -171,6 +171,7 @@ collision_mask = 4194304
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HazardArea"]
 shape = SubResource( 4 )
+disabled = true
 
 [node name="HitboxArea" type="Area2D" parent="."]
 position = Vector2( 0, -8 )
@@ -179,3 +180,4 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxArea"]
 shape = SubResource( 5 )
+disabled = true

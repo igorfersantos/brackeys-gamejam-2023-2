@@ -3,6 +3,8 @@ extends "res://scenes/NormalEnemy.gd"
 export var bomb_radius:int = 40
 export(int, LAYERS_2D_PHYSICS) var bomb_mask
 
+func _ready():
+	$ExplosionTimer.connect("timeout", self, "on_explosion_timer_timeout")
 
 func kill():
 	var deathInstance = explosiveEnemyDeathScene.instance()
@@ -14,3 +16,6 @@ func kill():
 		deathInstance.scale = Vector2(-1, 1)
 
 	queue_free()
+
+func on_explosion_timer_timeout():
+	kill()

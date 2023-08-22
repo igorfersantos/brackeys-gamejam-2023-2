@@ -9,14 +9,15 @@ enum State { NORMAL, DASHING, INPUT_DISABLED }
 
 export(int, LAYERS_2D_PHYSICS) var dashHazardMask
 
-var gravity = 1000
-var velocity = Vector2.ZERO
-var maxHorizontalSpeed = 140
-var maxDashSpeed = 500
-var minDashSpeed = 200
-var horizontalAcceleration = 1000
-var jumpSpeed = 300
-var jumpTerminationMultiplier = 3
+export var gravity = 1000
+export var velocity = Vector2.ZERO
+export var maxHorizontalSpeed = 140
+export var maxDashSpeed = 500
+export var minDashSpeed = 200
+export var horizontalAcceleration = 1000
+export var jumpSpeed = 300
+export var jumpFallGravityMultiplier = 3
+
 var hasDoubleJump = false
 var hasDash = false
 var currentState = State.NORMAL
@@ -71,7 +72,7 @@ func process_normal(delta):
 		
 
 	if (velocity.y < 0 && !Input.is_action_pressed("jump")):
-		velocity.y += gravity * jumpTerminationMultiplier * delta
+		velocity.y += gravity * jumpFallGravityMultiplier * delta
 	else:
 		velocity.y += gravity * delta
 

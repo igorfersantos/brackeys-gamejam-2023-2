@@ -59,7 +59,7 @@ tracks/3/keys = {
 }
 
 [sub_resource type="Animation" id=6]
-resource_name = "spawn]"
+resource_name = "spawn"
 length = 0.75
 step = 0.05
 tracks/0/type = "value"
@@ -138,25 +138,23 @@ radius = 7.0
 [node name="ExplosiveEnemy" type="KinematicBody2D"]
 script = ExtResource( 1 )
 startDirection = 1
-isSpawning = false
 bomb_mask = 1048581
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "spawn]"
+autoplay = "spawn"
 anims/default = SubResource( 7 )
-"anims/spawn]" = SubResource( 6 )
-"next/spawn]" = "default"
+anims/spawn = SubResource( 6 )
+next/spawn = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -6 )
 shape = SubResource( 2 )
 
 [node name="Visuals" type="Node2D" parent="."]
-scale = Vector2( 1.2, 1.2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Visuals"]
 frames = SubResource( 1 )
-animation = "run"
+animation = "spawn"
 frame = 1
 playing = true
 offset = Vector2( 0, -12 )
@@ -176,6 +174,7 @@ collision_mask = 4194304
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HazardArea"]
 shape = SubResource( 4 )
+disabled = true
 
 [node name="HitboxArea" type="Area2D" parent="."]
 position = Vector2( 0, -8 )
@@ -184,3 +183,9 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxArea"]
 shape = SubResource( 5 )
+disabled = true
+
+[node name="ExplosionTimer" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+autostart = true

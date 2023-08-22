@@ -17,17 +17,19 @@ func get_start_direction():
 
 func spawn_enemy():
 	currentEnemyNode = enemyScene.instance()
-	currentEnemyNode.direction = get_start_direction()
+	currentEnemyNode.startDirection = get_start_direction()
 	currentEnemyNode.global_position = global_position
 	get_parent().add_child(currentEnemyNode)
 
 func check_enemy_spawn():
-	if (!is_instance_valid(currentEnemyNode)):
-		if (spawnOnNextTick):
-			spawn_enemy()
-			spawnOnNextTick = false
-		else: 
-			spawnOnNextTick = true
+	if is_instance_valid(currentEnemyNode): 
+		return
+		
+	if (spawnOnNextTick):
+		spawn_enemy()
+		spawnOnNextTick = false
+	else: 
+		spawnOnNextTick = true
 
 func on_check_enemy_spawn():
 	check_enemy_spawn()
