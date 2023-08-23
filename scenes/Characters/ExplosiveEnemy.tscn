@@ -112,7 +112,6 @@ radius = 7.0
 script = ExtResource( 1 )
 startDirection = 1
 is_spawning = false
-bomb_strength = 2
 bomb_radius = 9
 bomb_mask = 1048581
 
@@ -127,7 +126,6 @@ next/spawn = "default"
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Visuals"]
 frames = SubResource( 1 )
 animation = "run"
-frame = 1
 playing = true
 offset = Vector2( 0, -12 )
 
