@@ -3,6 +3,7 @@ extends Camera2D
 var targetPosition = Vector2.ZERO
 
 export(Color, RGB) var backgroundColor
+export(Color, RGB) var foregroundColor
 export(OpenSimplexNoise) var shakeNoise
 
 var xNoiseSampleVector = Vector2.RIGHT
@@ -22,7 +23,7 @@ func _ready():
 func _process(delta):
 	acquire_target_position()
 
-	global_position = lerp(targetPosition, global_position, pow(2, -10 * delta))
+	global_position = lerp(targetPosition, global_position, pow(2, -40 * delta))
 
 	if (currentShakePercentage > 0):
 		xNoiseSamplePosition += xNoiseSampleVector * noiseSampleTravelRate * delta

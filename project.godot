@@ -19,6 +19,10 @@ boot_splash/bg_color=Color( 0.87451, 0.964706, 0.960784, 1 )
 config/icon="res://icon.png"
 config/windows_native_icon="res://icon.ico"
 
+[audio]
+
+enable_audio_input=true
+
 [autoload]
 
 LevelManager="*res://scenes/LevelManager.tscn"
@@ -35,6 +39,7 @@ gdscript/warnings/return_value_discarded=false
 
 window/size/width=480
 window/size/height=270
+window/size/fullscreen=true
 window/size/test_width=1280
 window/size/test_height=720
 window/stretch/mode="viewport"

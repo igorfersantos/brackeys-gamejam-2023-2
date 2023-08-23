@@ -1,9 +1,14 @@
-[gd_resource type="AudioBusLayout" load_steps=5 format=2]
+[gd_resource type="AudioBusLayout" load_steps=6 format=2]
 
 [sub_resource type="AudioEffectHighPassFilter" id=2]
 resource_name = "HighPassFilter"
 cutoff_hz = 300.0
 resonance = 0.25
+
+[sub_resource type="AudioEffectReverb" id=6]
+resource_name = "Reverb"
+room_size = 0.12
+damping = 0.2
 
 [sub_resource type="AudioEffectPitchShift" id=5]
 resource_name = "PitchShift"
@@ -19,7 +24,7 @@ wet = 1.0
 voice/1/delay_ms = 50.0
 
 [resource]
-bus/0/volume_db = -80.0
+bus/0/volume_db = 1.25825
 bus/1/name = "SFX"
 bus/1/solo = false
 bus/1/mute = false
@@ -30,10 +35,12 @@ bus/2/name = "Footsteps"
 bus/2/solo = false
 bus/2/mute = false
 bus/2/bypass_fx = false
-bus/2/volume_db = 0.0
+bus/2/volume_db = -21.8264
 bus/2/send = "SFX"
 bus/2/effect/0/effect = SubResource( 2 )
 bus/2/effect/0/enabled = true
+bus/2/effect/1/effect = SubResource( 6 )
+bus/2/effect/1/enabled = true
 bus/3/name = "PlayerDash"
 bus/3/solo = false
 bus/3/mute = false

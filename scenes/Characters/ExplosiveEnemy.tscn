@@ -99,16 +99,14 @@ animations = [ {
 } ]
 
 [sub_resource type="CircleShape2D" id=8]
-radius = 5.0
+radius = 8.0
 
-[sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 5, 6 )
+[sub_resource type="RectangleShape2D" id=9]
 
 [sub_resource type="CircleShape2D" id=4]
-radius = 9.0
+radius = 7.0
 
 [sub_resource type="CircleShape2D" id=5]
-radius = 15.0
 
 [node name="ExplosiveEnemy" type="KinematicBody2D"]
 script = ExtResource( 1 )
@@ -129,21 +127,22 @@ next/spawn = "default"
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Visuals"]
 frames = SubResource( 1 )
 animation = "run"
+frame = 1
 playing = true
 offset = Vector2( 0, -12 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( 0, -9 )
 shape = SubResource( 8 )
 
 [node name="GoalDetector" type="Area2D" parent="."]
-visible = false
 collision_layer = 2097152
 collision_mask = 2097152
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GoalDetector"]
-position = Vector2( 0, -6 )
-shape = SubResource( 3 )
+position = Vector2( 0, -9 )
+shape = SubResource( 9 )
 
 [node name="HazardArea" type="Area2D" parent="."]
 position = Vector2( 0, -9 )
@@ -164,6 +163,6 @@ shape = SubResource( 5 )
 disabled = true
 
 [node name="ExplosionTimer" type="Timer" parent="."]
-wait_time = 6.0
+wait_time = 20.0
 one_shot = true
 autostart = true
