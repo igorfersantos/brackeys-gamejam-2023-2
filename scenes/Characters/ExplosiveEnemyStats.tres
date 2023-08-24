@@ -22,7 +22,7 @@ export var countdown_time = 2
 [resource]
 script = SubResource( 1 )
 startDirection = 0
-minSpeed = 10
+minSpeed = 25
 maxSpeed = 100
 speed = 10
 gravity = 500
