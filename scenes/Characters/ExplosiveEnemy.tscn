@@ -134,7 +134,7 @@ offset = Vector2( 0, -3 )
 [node name="Center" type="Position2D" parent="Visuals/AnimatedSprite"]
 
 [node name="BodyCollision" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -9 )
+position = Vector2( 0, -7 )
 shape = SubResource( 10 )
 
 [node name="GoalDetector" type="Area2D" parent="."]

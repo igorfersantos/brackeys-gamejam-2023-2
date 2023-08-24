@@ -11,6 +11,7 @@ export var is_dying = false
 var bomb_scene = preload("res://scenes/Skills/Bomb/Bomb.tscn")
 var velocity = Vector2.ZERO
 var direction = Vector2.ZERO
+var deg = deg2rad(75)
 
 func _ready():
 	# Note that this will be overwritten in EnemySpawners!
@@ -33,7 +34,10 @@ func _process(delta):
 	velocity.x = (direction * stats.speed).x
 	velocity.y += stats.gravity * delta
 
-	velocity = move_and_slide(velocity, Vector2.UP)
+	velocity = move_and_slide(velocity, Vector2.UP, false, 4, deg)
+
+	if (is_on_wall() && is_on_floor()):
+		direction = direction * -1
 
 
 func kill():
