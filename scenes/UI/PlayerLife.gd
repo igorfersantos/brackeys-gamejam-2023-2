@@ -1,4 +1,4 @@
-extends CanvasLayer
+extends MarginContainer
 
 func take_damage():
 	var lifes = $MarginContainer/LifesContainer.get_children()

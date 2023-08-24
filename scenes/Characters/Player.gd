@@ -2,22 +2,15 @@ extends KinematicBody2D
 
 signal died
 
-var playerDeathScene = preload("res://scenes/Characters/PlayerDeath.tscn")
-var footstepParticles = preload("res://scenes/FootstepParticles.tscn")
-
 enum State { NORMAL, DASHING, INPUT_DISABLED }
 
 export(int, LAYERS_2D_PHYSICS) var dashHazardMask
+export var player_stats: Resource
 
-export var gravity = 1000
-export var velocity = Vector2.ZERO
-export var maxHorizontalSpeed = 140
-export var maxDashSpeed = 500
-export var minDashSpeed = 200
-export var horizontalAcceleration = 1000
-export var jumpSpeed = 300
-export var jumpFallGravityMultiplier: float = 3
+var playerDeathScene = preload("res://scenes/Characters/PlayerDeath.tscn")
+var footstepParticles = preload("res://scenes/FootstepParticles.tscn")
 
+var velocity = Vector2.ZERO
 var hasDoubleJump = false
 var hasDash = false
 var currentState = State.NORMAL
@@ -57,14 +50,14 @@ func process_normal(delta):
 
 	var moveVector = get_movement_vector()
 
-	velocity.x += moveVector.x * horizontalAcceleration * delta
+	velocity.x += moveVector.x * player_stats.horizontalAcceleration * delta
 	if (moveVector.x == 0):
 		velocity.x = lerp(0, velocity.x, pow(2, -25 * delta))
 	
-	velocity.x = clamp(velocity.x, -maxHorizontalSpeed, maxHorizontalSpeed)
+	velocity.x = clamp(velocity.x, -player_stats.maxHorizontalSpeed, player_stats.maxHorizontalSpeed)
 
 	if (moveVector.y < 0 && (is_on_floor() || !$CoyoteTimer.is_stopped() || hasDoubleJump)):
-		velocity.y = moveVector.y * jumpSpeed
+		velocity.y = moveVector.y * player_stats.jumpSpeed
 		if (!is_on_floor() && $CoyoteTimer.is_stopped()):
 			$"/root/Helpers".apply_camera_snake(.75)
 			hasDoubleJump = false
@@ -72,9 +65,9 @@ func process_normal(delta):
 		
 
 	if (velocity.y < 0 && !Input.is_action_pressed("jump")):
-		velocity.y += gravity * jumpFallGravityMultiplier * delta
+		velocity.y += player_stats.gravity * player_stats.jumpFallGravityMultiplier * delta
 	else:
-		velocity.y += gravity * delta
+		velocity.y += player_stats.gravity * delta
 
 	var wasOnFloor = is_on_floor()
 	velocity = move_and_slide(velocity, Vector2.UP)
@@ -85,8 +78,10 @@ func process_normal(delta):
 		spawn_footsteps(1.5)
 	
 	if (is_on_floor()):
-		hasDoubleJump = true
-		hasDash = true
+		if(player_stats.canDoubleJump):
+			hasDoubleJump = true
+		if(player_stats.canDash):
+			hasDash = true
 	
 	if (hasDash && Input.is_action_just_pressed("dash")):
 		call_deferred("change_state", State.DASHING)
@@ -105,20 +100,22 @@ func process_dash(delta):
 		$AnimatedSprite.play("jump")
 		var velocityMod = 1 if $AnimatedSprite.flip_h else -1
 
-		velocity = Vector2(maxDashSpeed * velocityMod, 0)
+		velocity = Vector2(player_stats.maxDashSpeed * velocityMod, 0)
 
 	velocity = move_and_slide(velocity, Vector2.UP)
 	velocity.x = lerp(0, velocity.x, pow(2, -8 * delta))
 
-	if (abs(velocity.x) < minDashSpeed):
+	if (abs(velocity.x) < player_stats.minDashSpeed):
 		call_deferred("change_state", State.NORMAL)
+
 
 func process_input_disabled(delta):
 	if (isStateNew):
 		$AnimatedSprite.play("idle")
 	velocity.x = lerp(0, velocity.x, pow(2, -25 * delta))
-	velocity.y += gravity * delta
+	velocity.y += player_stats.gravity * delta
 	velocity = move_and_slide(velocity, Vector2.UP)
+
 
 func get_movement_vector():
 	var moveVector = Vector2.ZERO

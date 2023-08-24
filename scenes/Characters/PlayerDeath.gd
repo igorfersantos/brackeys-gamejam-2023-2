@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
+export var gravity = 1000
 var velocity = Vector2.ZERO
-var gravity = 1000
 
 func _ready():
 	if (velocity.x > 0):

@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="2d-platformer-game"
-run/main_scene="res://scenes/Levels/TestLevel2.tscn"
+run/main_scene="res://scenes/Levels/TestLevel3.tscn"
 boot_splash/image="res://icon.png"
 boot_splash/fullsize=false
 boot_splash/use_filter=false
@@ -30,6 +30,7 @@ Helpers="*res://scripts/helpers.gd"
 ScreenTransitionManager="*res://scenes/ScreenTransitionManager.gd"
 MouseCursor="*res://scenes/UI/MouseCursor.tscn"
 MusicPlayer="*res://scenes/MusicPlayer.tscn"
+GameManager="*res://scripts/game_manager.gd"
 
 [debug]
 

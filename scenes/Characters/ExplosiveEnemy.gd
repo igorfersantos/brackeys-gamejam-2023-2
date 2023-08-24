@@ -2,28 +2,23 @@ extends KinematicBody2D
 
 signal dead
 
-enum Direction { RIGHT, LEFT }
-
-export(Direction) var startDirection
-
 var explosiveEnemyDeathScene = preload("res://scenes/Characters/ExplosiveEnemyDeath.tscn")
 
+export var stats: Resource
 export var is_spawning = true
 export var is_dying = false
-var maxSpeed = 85
-var velocity = Vector2.ZERO
-var direction = Vector2.ZERO
-var gravity = 500
 
 var bomb_scene = preload("res://scenes/Skills/Bomb/Bomb.tscn")
-export var bomb_strength:int = 1
-export var bomb_radius:int = 40
-export(int, LAYERS_2D_PHYSICS) var bomb_mask
+var velocity = Vector2.ZERO
+var direction = Vector2.ZERO
 
 func _ready():
 	# Note that this will be overwritten in EnemySpawners!
-	direction = startDirection
-	
+	direction = stats.startDirection
+
+	$ExplosionTimer.wait_time = stats.countdown_time
+	$ExplosionTimer.start()
+
 	$GoalDetector.connect("area_entered", self, "on_goal_entered")
 	$HitboxArea.connect("area_entered", self, "on_hitbox_entered")
 
@@ -35,8 +30,8 @@ func _process(delta):
 	if (is_spawning):
 		return
 	
-	velocity.x = (direction * maxSpeed).x
-	velocity.y += gravity * delta
+	velocity.x = (direction * stats.speed).x
+	velocity.y += stats.gravity * delta
 
 	velocity = move_and_slide(velocity, Vector2.UP)
 
@@ -57,7 +52,7 @@ func kill():
 	set_process(false)
 	set_physics_process(false)
 	$Visuals.visible = false
-	$CollisionShape2D.disabled = true
+	$BodyCollision.disabled = true
 	$GoalDetector.monitorable = false
 	$HazardArea.monitorable = false
 	$HitboxArea.monitorable = false
@@ -67,8 +62,15 @@ func kill():
 	yield(deathInstance, "bomb_dropped")
 	
 	var bomb = bomb_scene.instance()
+	var bomb_pos = $Visuals/AnimatedSprite/Center.global_position
 	get_parent().add_child(bomb)
-	bomb.init(bomb_mask, bomb_strength, bomb_radius, position)
+	bomb.init(
+		stats.bomb_mask, 
+		stats.bomb_strength,
+		stats.bomb_radius,
+		stats.bomb_raycasts, 
+		bomb_pos
+	)
 	bomb.explode()
 	
 	queue_free()

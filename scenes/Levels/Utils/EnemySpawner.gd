@@ -4,6 +4,7 @@ enum Direction { RIGHT, LEFT }
 
 export(Direction) var startDirection
 export(PackedScene) var enemyScene
+export(Resource) var enemy_stats;
 
 var currentEnemyNode = null
 var spawnOnNextTick = false
@@ -17,7 +18,9 @@ func get_start_direction():
 
 func spawn_enemy():
 	currentEnemyNode = enemyScene.instance()
-	currentEnemyNode.startDirection = get_start_direction()
+	if enemy_stats:
+		currentEnemyNode.stats = enemy_stats
+	currentEnemyNode.stats.startDirection = get_start_direction()
 	currentEnemyNode.global_position = global_position
 	get_parent().add_child(currentEnemyNode)
 

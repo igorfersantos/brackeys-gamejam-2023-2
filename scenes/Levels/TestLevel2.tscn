@@ -24,6 +24,12 @@ z_index = -1
 [node name="Player" parent="PlayerRoot" index="0"]
 position = Vector2( -68, -198 )
 
+[node name="EnemySpawner" parent="Enemies" index="0" instance=ExtResource( 2 )]
+position = Vector2( -210, -207 )
+
+[node name="EnemySpawner2" parent="Enemies" index="1" instance=ExtResource( 2 )]
+position = Vector2( 87, -76 )
+
 [node name="Bomb" parent="." index="8" instance=ExtResource( 4 )]
 position = Vector2( -54, 0 )
 bomb_radius = 24
@@ -38,9 +44,3 @@ position = Vector2( -218, 11 )
 
 [node name="EnemyGoal3" parent="Goals" index="2" instance=ExtResource( 5 )]
 position = Vector2( 109, -44 )
-
-[node name="EnemySpawner" parent="Enemies" index="0" instance=ExtResource( 2 )]
-position = Vector2( -210, -207 )
-
-[node name="EnemySpawner2" parent="Enemies" index="1" instance=ExtResource( 2 )]
-position = Vector2( 87, -76 )
