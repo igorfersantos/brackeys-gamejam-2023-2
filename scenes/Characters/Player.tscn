@@ -164,67 +164,69 @@ dashHazardMask = 4194304
 player_stats = ExtResource( 23 )
 
 [node name="FootstepAudioPlayer" parent="." instance=ExtResource( 7 )]
+position = Vector2( 0, -8 )
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="FootstepAudioPlayer"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer2D" parent="FootstepAudioPlayer"]
 stream = ExtResource( 8 )
 volume_db = 4.0
 bus = "Footsteps"
 
-[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="FootstepAudioPlayer"]
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer2D" parent="FootstepAudioPlayer"]
 stream = ExtResource( 9 )
 volume_db = 4.0
 bus = "Footsteps"
 
-[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="FootstepAudioPlayer"]
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer2D" parent="FootstepAudioPlayer"]
 stream = ExtResource( 6 )
 volume_db = 4.0
 bus = "Footsteps"
 
-[node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="FootstepAudioPlayer"]
+[node name="AudioStreamPlayer4" type="AudioStreamPlayer2D" parent="FootstepAudioPlayer"]
 stream = ExtResource( 4 )
 volume_db = 4.0
 bus = "Footsteps"
 
-[node name="AudioStreamPlayer5" type="AudioStreamPlayer" parent="FootstepAudioPlayer"]
+[node name="AudioStreamPlayer5" type="AudioStreamPlayer2D" parent="FootstepAudioPlayer"]
 stream = ExtResource( 5 )
 volume_db = 4.0
 bus = "Footsteps"
 
-[node name="AudioStreamPlayer6" type="AudioStreamPlayer" parent="FootstepAudioPlayer"]
+[node name="AudioStreamPlayer6" type="AudioStreamPlayer2D" parent="FootstepAudioPlayer"]
 stream = ExtResource( 10 )
 volume_db = 4.0
 bus = "Footsteps"
 
-[node name="AudioStreamPlayer7" type="AudioStreamPlayer" parent="FootstepAudioPlayer"]
+[node name="AudioStreamPlayer7" type="AudioStreamPlayer2D" parent="FootstepAudioPlayer"]
 stream = ExtResource( 11 )
 volume_db = 4.0
 bus = "Footsteps"
 
-[node name="AudioStreamPlayer8" type="AudioStreamPlayer" parent="FootstepAudioPlayer"]
+[node name="AudioStreamPlayer8" type="AudioStreamPlayer2D" parent="FootstepAudioPlayer"]
 stream = ExtResource( 12 )
 volume_db = 4.0
 bus = "Footsteps"
 
-[node name="AudioStreamPlayer9" type="AudioStreamPlayer" parent="FootstepAudioPlayer"]
+[node name="AudioStreamPlayer9" type="AudioStreamPlayer2D" parent="FootstepAudioPlayer"]
 stream = ExtResource( 13 )
 volume_db = 4.0
 bus = "Footsteps"
 
-[node name="AudioStreamPlayer10" type="AudioStreamPlayer" parent="FootstepAudioPlayer"]
+[node name="AudioStreamPlayer10" type="AudioStreamPlayer2D" parent="FootstepAudioPlayer"]
 stream = ExtResource( 14 )
 volume_db = 4.0
 bus = "Footsteps"
 
 [node name="DashAudioPlayer" parent="." instance=ExtResource( 7 )]
+position = Vector2( 0, -8 )
 numberToPlay = 1
 enablePitchRandomization = false
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="DashAudioPlayer"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer2D" parent="DashAudioPlayer"]
 stream = ExtResource( 15 )
 volume_db = -5.0
 bus = "PlayerDash"
 
-[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="DashAudioPlayer"]
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer2D" parent="DashAudioPlayer"]
 stream = ExtResource( 15 )
 volume_db = -5.0
 bus = "PlayerDash"

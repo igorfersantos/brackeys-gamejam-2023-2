@@ -34,10 +34,10 @@ anchor_bottom = 1.0
 theme = ExtResource( 2 )
 
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
-margin_left = 96.0
-margin_top = 32.0
-margin_right = 224.0
-margin_bottom = 147.0
+margin_left = 176.0
+margin_top = 77.0
+margin_right = 304.0
+margin_bottom = 192.0
 rect_pivot_offset = Vector2( 64, 57 )
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -66,19 +66,22 @@ text = "PAUSE"
 align = 1
 
 [node name="ContinueButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource( 1 )]
+margin_left = 8.0
 margin_top = 15.0
+margin_right = 104.0
 margin_bottom = 39.0
-rect_rotation = 0.0
 text = "CONTINUE"
 
 [node name="OptionsButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource( 1 )]
+margin_left = 8.0
 margin_top = 45.0
+margin_right = 104.0
 margin_bottom = 69.0
-rect_rotation = 0.0
 text = "OPTIONS"
 
 [node name="QuitButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource( 1 )]
+margin_left = 8.0
 margin_top = 75.0
+margin_right = 104.0
 margin_bottom = 99.0
-rect_rotation = 0.0
 text = "QUIT TO MENU"

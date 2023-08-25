@@ -127,9 +127,8 @@ next/spawn = "default"
 position = Vector2( 0, -9 )
 stream = ExtResource( 8 )
 volume_db = 6.0
-autoplay = true
-max_distance = 1000.0
-attenuation = 10.0
+max_distance = 150.0
+attenuation = 2.0
 bus = "SFX"
 
 [node name="Visuals" type="Node2D" parent="."]
@@ -138,7 +137,6 @@ bus = "SFX"
 position = Vector2( 0, -9 )
 frames = SubResource( 1 )
 animation = "run"
-frame = 1
 playing = true
 offset = Vector2( 0, -3 )
 

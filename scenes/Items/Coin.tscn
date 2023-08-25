@@ -71,7 +71,7 @@ tracks/2/keys = {
 }
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 16.0
+radius = 2.0
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -132,10 +132,11 @@ collision_layer = 8388608
 collision_mask = 8388608
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 0, -1 )
 shape = SubResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0, -0.954419 )
+scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 1 )
-frame = 1
 playing = true
