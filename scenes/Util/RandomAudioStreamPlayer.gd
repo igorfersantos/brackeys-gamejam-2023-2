@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 
 export(int) var numberToPlay = 2
 export(bool) var enablePitchRandomization = true

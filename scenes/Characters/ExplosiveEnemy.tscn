@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scenes/Characters/ExplosiveEnemy.gd" type="Script" id=1]
 [ext_resource path="res://assets/enemy/bomb_walk1_s.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://assets/enemy/bomb_spawn1.png" type="Texture" id=5]
 [ext_resource path="res://assets/enemy/bomb_walk2_s.png" type="Texture" id=6]
 [ext_resource path="res://scenes/Characters/ExplosiveEnemyStats.tres" type="Resource" id=7]
+[ext_resource path="res://assets/sounds/chimes.ogg" type="AudioStream" id=8]
 
 [sub_resource type="Animation" id=7]
 tracks/0/type = "value"
@@ -122,12 +123,22 @@ anims/default = SubResource( 7 )
 anims/spawn = SubResource( 6 )
 next/spawn = "default"
 
+[node name="Sound" type="AudioStreamPlayer2D" parent="."]
+position = Vector2( 0, -9 )
+stream = ExtResource( 8 )
+volume_db = 6.0
+autoplay = true
+max_distance = 1000.0
+attenuation = 10.0
+bus = "SFX"
+
 [node name="Visuals" type="Node2D" parent="."]
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Visuals"]
 position = Vector2( 0, -9 )
 frames = SubResource( 1 )
 animation = "run"
+frame = 1
 playing = true
 offset = Vector2( 0, -3 )
 

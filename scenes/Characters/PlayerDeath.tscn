@@ -172,101 +172,105 @@ autoplay = "Death"
 anims/Death = SubResource( 2 )
 
 [node name="DeathSoundPlayer1" parent="." instance=ExtResource( 1 )]
+position = Vector2( 0, -9 )
 numberToPlay = 1
 minPitchScale = 0.8
 maxPitchScale = 1.0
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="DeathSoundPlayer1"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer2D" parent="DeathSoundPlayer1"]
 stream = ExtResource( 14 )
 bus = "SFX"
 
-[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="DeathSoundPlayer1"]
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer2D" parent="DeathSoundPlayer1"]
 stream = ExtResource( 9 )
 bus = "SFX"
 
-[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="DeathSoundPlayer1"]
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer2D" parent="DeathSoundPlayer1"]
 stream = ExtResource( 4 )
 bus = "SFX"
 
-[node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="DeathSoundPlayer1"]
+[node name="AudioStreamPlayer4" type="AudioStreamPlayer2D" parent="DeathSoundPlayer1"]
 stream = ExtResource( 10 )
 bus = "SFX"
 
-[node name="AudioStreamPlayer5" type="AudioStreamPlayer" parent="DeathSoundPlayer1"]
+[node name="AudioStreamPlayer5" type="AudioStreamPlayer2D" parent="DeathSoundPlayer1"]
 stream = ExtResource( 13 )
 bus = "SFX"
 
 [node name="DeathSoundPlayer2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 0, -9 )
 numberToPlay = 1
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="DeathSoundPlayer2"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer2D" parent="DeathSoundPlayer2"]
 stream = ExtResource( 6 )
 bus = "SFX"
 
-[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="DeathSoundPlayer2"]
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer2D" parent="DeathSoundPlayer2"]
 stream = ExtResource( 15 )
 bus = "SFX"
 
-[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="DeathSoundPlayer2"]
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer2D" parent="DeathSoundPlayer2"]
 stream = ExtResource( 12 )
 bus = "SFX"
 
-[node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="DeathSoundPlayer2"]
+[node name="AudioStreamPlayer4" type="AudioStreamPlayer2D" parent="DeathSoundPlayer2"]
 stream = ExtResource( 23 )
 bus = "SFX"
 
-[node name="AudioStreamPlayer5" type="AudioStreamPlayer" parent="DeathSoundPlayer2"]
+[node name="AudioStreamPlayer5" type="AudioStreamPlayer2D" parent="DeathSoundPlayer2"]
 stream = ExtResource( 24 )
 bus = "SFX"
 
 [node name="DeathSoundPlayer3" parent="." instance=ExtResource( 1 )]
+position = Vector2( 0, -9 )
 numberToPlay = 1
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="DeathSoundPlayer3"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer2D" parent="DeathSoundPlayer3"]
 stream = ExtResource( 16 )
 volume_db = -5.0
 bus = "SFX"
 
-[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="DeathSoundPlayer3"]
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer2D" parent="DeathSoundPlayer3"]
 stream = ExtResource( 17 )
 volume_db = -5.0
 bus = "SFX"
 
-[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="DeathSoundPlayer3"]
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer2D" parent="DeathSoundPlayer3"]
 stream = ExtResource( 8 )
 volume_db = -5.0
 bus = "SFX"
 
-[node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="DeathSoundPlayer3"]
+[node name="AudioStreamPlayer4" type="AudioStreamPlayer2D" parent="DeathSoundPlayer3"]
 stream = ExtResource( 11 )
 volume_db = -5.0
 bus = "SFX"
 
-[node name="AudioStreamPlayer5" type="AudioStreamPlayer" parent="DeathSoundPlayer3"]
+[node name="AudioStreamPlayer5" type="AudioStreamPlayer2D" parent="DeathSoundPlayer3"]
 stream = ExtResource( 5 )
 volume_db = -5.0
 bus = "SFX"
 
 [node name="DeathSoundPlayer4" parent="." instance=ExtResource( 1 )]
+position = Vector2( 0, -9 )
 numberToPlay = 1
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="DeathSoundPlayer4"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer2D" parent="DeathSoundPlayer4"]
 stream = ExtResource( 21 )
 bus = "PlayerDeath"
 
-[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="DeathSoundPlayer4"]
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer2D" parent="DeathSoundPlayer4"]
 stream = ExtResource( 19 )
 bus = "PlayerDeath"
 
-[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="DeathSoundPlayer4"]
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer2D" parent="DeathSoundPlayer4"]
 stream = ExtResource( 20 )
 bus = "PlayerDeath"
 
-[node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="DeathSoundPlayer4"]
+[node name="AudioStreamPlayer4" type="AudioStreamPlayer2D" parent="DeathSoundPlayer4"]
 stream = ExtResource( 18 )
 bus = "PlayerDeath"
 
-[node name="AudioStreamPlayer5" type="AudioStreamPlayer" parent="DeathSoundPlayer4"]
+[node name="AudioStreamPlayer5" type="AudioStreamPlayer2D" parent="DeathSoundPlayer4"]
 stream = ExtResource( 22 )
 bus = "PlayerDeath"
 
