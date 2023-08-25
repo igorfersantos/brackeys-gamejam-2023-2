@@ -137,6 +137,7 @@ bus = "SFX"
 position = Vector2( 0, -9 )
 frames = SubResource( 1 )
 animation = "run"
+frame = 1
 playing = true
 offset = Vector2( 0, -3 )
 

@@ -1,8 +1,8 @@
 extends CanvasLayer
 
-onready var continueButton = $MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ContinueButton
-onready var optionsButton = $MarginContainer/PanelContainer/MarginContainer/VBoxContainer/OptionsButton
-onready var quitToMenuButton = $MarginContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButton
+onready var continueButton = $MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/ContinueButton
+onready var optionsButton = $MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/OptionsButton
+onready var quitToMenuButton = $MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/QuitButton
 
 var optionsMenuScrene = preload("res://scenes/UI/OptionsMenu.tscn")
 

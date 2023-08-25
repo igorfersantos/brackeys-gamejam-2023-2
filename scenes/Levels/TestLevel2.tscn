@@ -21,9 +21,6 @@ tile_data = PoolIntArray( -1966032, 0, 0, -1769415, 0, 0, -1769414, 0, 0, -15728
 position = Vector2( -63, 18 )
 z_index = -1
 
-[node name="Player" parent="PlayerRoot" index="0"]
-position = Vector2( -68, -198 )
-
 [node name="EnemySpawner" parent="Enemies" index="0" instance=ExtResource( 2 )]
 position = Vector2( -210, -207 )
 
