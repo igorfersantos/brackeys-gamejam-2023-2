@@ -75,13 +75,13 @@ func spawn_rays():
 		add_child(ray_instance)
 		i += 1
 	
-	yield(ray_instance, "ray_explosion_ended")
+	ray_instance.connect("ray_explosion_ended", self, "on_last_ray_explosion_ended")
 	
 func explode():
 	spawn_rays()
 	emit_signal("exploded")
 
-func on_ray_explosion_hit_cell(cell, tile_id, ray):
+func on_ray_explosion_hit_cell(cell, tile_id, ray, collider):
 	if tile_id == -1:
 		return
 	
@@ -103,3 +103,6 @@ func on_ray_explosion_hit_cell(cell, tile_id, ray):
 	damage_cell(cell, tile_id)
 	affected_tilemap_cell_by_ray[cell] = (ray[0])
 	affected_tilemap_cell_by_ray[cell].weaken_strengh()
+
+func on_last_ray_explosion_ended():
+	queue_free()

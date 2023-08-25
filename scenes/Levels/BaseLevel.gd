@@ -1,19 +1,20 @@
 extends Node
 
-signal coin_total_changed(totalCoins, collectedCoins)
+signal coin_total_changed(total_coins, collectedCoins)
 
+export(PackedScene) var playerScene
 export(PackedScene) var levelCompleteScene 
 
-var playerScene = preload("res://scenes/Characters/Player.tscn")
 var pauseScene = preload("res://scenes/UI/PauseMenu.tscn")
 var spawnPosition = Vector2.ZERO
-var currentPlayerNode = null
-var totalCoins = 0
-var collectedCoins = 0
+var current_player_node = null
+var total_coins = 0
+var collected_coins = 0
 
 func _ready():
-	spawnPosition = $PlayerRoot/Player.global_position
-	register_player($PlayerRoot/Player)
+	spawnPosition = $PlayerSpawnPoint.global_position
+	var player_instance = register_player(playerScene)
+	spawn_player(player_instance)
 	coin_total_changed(get_tree().get_nodes_in_group("coin").size())
 
 func _unhandled_input(event):
@@ -22,35 +23,35 @@ func _unhandled_input(event):
 		add_child(pauseInstance)
 
 func coin_collected():
-	collectedCoins += 1
-	print(totalCoins, " - ", collectedCoins)
-	emit_signal("coin_total_changed", totalCoins, collectedCoins)
+	collected_coins += 1
+	print(total_coins, " - ", collected_coins)
+	emit_signal("coin_total_changed", total_coins, collected_coins)
 
 
 func coin_total_changed(newTotal):
-	totalCoins = newTotal
-	emit_signal("coin_total_changed", totalCoins, collectedCoins)
+	total_coins = newTotal
+	emit_signal("coin_total_changed", total_coins, collected_coins)
 
 
-func register_player(player):
-	currentPlayerNode = player
-	currentPlayerNode.connect("died", self, "on_player_died", [], CONNECT_DEFERRED)
+func register_player(player_scene):
+	current_player_node = player_scene.instance()
+	current_player_node.connect("died", self, "on_player_died", [], CONNECT_DEFERRED)
+	return current_player_node
 
-func create_player():
-	var playerInstance = playerScene.instance()
-	$PlayerRoot.add_child(playerInstance)
-	playerInstance.global_position = spawnPosition
-	register_player(playerInstance)
+func spawn_player(player_instance):
+	$PlayerSpawnPoint.add_child(player_instance)
+	player_instance.global_position = $PlayerSpawnPoint.global_position
 
 func on_player_died():
-	currentPlayerNode.queue_free()
+	current_player_node.queue_free()
 
 	var timer = get_tree().create_timer(1.5)
 	yield(timer, "timeout")
 
-	create_player()
+	var new_player_instance = register_player(playerScene)
+	spawn_player(new_player_instance)
 
 func on_player_won():
-	currentPlayerNode.disable_player_input()
+	current_player_node.disable_player_input()
 	var levelComplete = levelCompleteScene.instance()
 	add_child(levelComplete)

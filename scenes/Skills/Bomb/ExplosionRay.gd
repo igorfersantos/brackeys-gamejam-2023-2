@@ -2,7 +2,7 @@ extends RayCast2D
 
 signal ray_explosion_ended
 signal ray_explosion_hit_player(player)
-signal ray_explosion_hit_cell(cell, tile_id, ray)
+signal ray_explosion_hit_cell(cell, tile_id, ray, collider)
 
 var strength = 1
 var collider = null
@@ -57,7 +57,7 @@ func _physics_process(_delta):
 		tile_id = tilemap.get_cellv(cell)
 		#print("cell/id/ray: %s/%s/%s" % [cell, tile_id, self])
 		
-		emit_signal("ray_explosion_hit_cell", cell, tile_id, [self])
+		emit_signal("ray_explosion_hit_cell", cell, tile_id, [self], collider)
 
 
 func weaken_strengh():

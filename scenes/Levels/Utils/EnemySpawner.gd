@@ -2,6 +2,7 @@ extends Position2D
 
 enum Direction { RIGHT, LEFT }
 
+export var enabled = true
 export(Direction) var startDirection
 export(PackedScene) var enemyScene
 export(Resource) var enemy_stats;
@@ -17,6 +18,9 @@ func get_start_direction():
 	return Vector2.RIGHT if startDirection == Direction.RIGHT else Vector2.LEFT
 
 func spawn_enemy():
+	if !enabled:
+		return
+		
 	currentEnemyNode = enemyScene.instance()
 	if enemy_stats:
 		currentEnemyNode.stats = enemy_stats
