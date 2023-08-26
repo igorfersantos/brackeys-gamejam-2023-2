@@ -27,11 +27,11 @@ texture = ExtResource( 2 )
 expand = true
 
 [node name="CoinLabel" type="Label" parent="."]
-margin_left = 10.0
+margin_left = 8.0
 margin_top = 2.0
-margin_right = 27.0
+margin_right = 30.0
 margin_bottom = 11.0
 size_flags_horizontal = 0
 custom_colors/font_color = Color( 0.705882, 0.901961, 0.909804, 1 )
 custom_fonts/font = ExtResource( 1 )
-text = "60m"
+text = "00:37"

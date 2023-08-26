@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://resources/theme.tres" type="Theme" id=1]
-[ext_resource path="res://scenes/UI/LevelComplete.gd" type="Script" id=2]
-[ext_resource path="res://scenes/UI/CoinCounter.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/UI/AnimatedButton.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/UI/LevelFailed.gd" type="Script" id=2]
+[ext_resource path="res://scenes/UI/AnimatedButton.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/UI/CoinCounter.tscn" type="PackedScene" id=4]
 
 [sub_resource type="Animation" id=1]
 resource_name = "bounce"
@@ -21,7 +21,7 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 1.1, 1.1 ), Vector2( 0.9, 0.9 ), Vector2( 1, 1 ) ]
 }
 
-[node name="LevelComplete" type="CanvasLayer"]
+[node name="LevelFailed" type="CanvasLayer"]
 script = ExtResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -79,12 +79,12 @@ margin_bottom = 9.0
 text = "You fell"
 align = 1
 
-[node name="CoinCounter" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" instance=ExtResource( 3 )]
+[node name="CoinCounter" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" instance=ExtResource( 4 )]
 anchor_left = 0.0
 anchor_right = 0.0
-margin_left = 47.0
+margin_left = 45.0
 margin_top = 13.0
-margin_right = 64.0
+margin_right = 67.0
 margin_bottom = 22.0
 size_flags_horizontal = 4
 
@@ -107,12 +107,12 @@ margin_right = 112.0
 margin_bottom = 88.0
 custom_constants/separation = 0
 
-[node name="RestartButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer2" instance=ExtResource( 4 )]
+[node name="RestartButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer2" instance=ExtResource( 3 )]
 margin_left = 3.0
 margin_right = 109.0
 text = "RESTART"
 
-[node name="NextLevelButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer2" instance=ExtResource( 4 )]
+[node name="NextLevelButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer2" instance=ExtResource( 3 )]
 visible = false
 margin_left = 31.0
 margin_top = 20.0
