@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://resources/theme.tres" type="Theme" id=1]
-[ext_resource path="res://scenes/UI/LevelFailed.gd" type="Script" id=2]
+[ext_resource path="res://scenes/UI/LevelCompleted.gd" type="Script" id=2]
 [ext_resource path="res://scenes/UI/AnimatedButton.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/UI/CoinCounter.tscn" type="PackedScene" id=4]
 
@@ -21,7 +21,7 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 1.1, 1.1 ), Vector2( 0.9, 0.9 ), Vector2( 1, 1 ) ]
 }
 
-[node name="LevelFailed" type="CanvasLayer"]
+[node name="LevelCompleted" type="CanvasLayer"]
 script = ExtResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -109,12 +109,12 @@ margin_right = 112.0
 margin_bottom = 86.0
 custom_constants/separation = 0
 
-[node name="RestartButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer2" instance=ExtResource( 3 )]
+[node name="NextLevelButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer2" instance=ExtResource( 3 )]
 margin_left = 3.0
 margin_right = 109.0
 text = "NEXT LEVEL"
 
-[node name="NextLevelButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer2" instance=ExtResource( 3 )]
+[node name="QuitToMenuButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer2" instance=ExtResource( 3 )]
 margin_left = 3.0
 margin_top = 24.0
 margin_right = 109.0

@@ -35,4 +35,4 @@ cell_size = Vector2( 18, 18 )
 format = 1
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 251, 250 )
+position = Vector2( 252, 252 )

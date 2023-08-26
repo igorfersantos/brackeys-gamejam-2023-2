@@ -7,7 +7,7 @@ onready var windowModeButton = $MarginContainer/PanelContainer/MarginContainer/V
 onready var musicRangeControl = $MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/MusicVolumeContainer/RangeControl
 onready var sfxRangeControl = $MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/SFXContainer/RangeControl
 
-var fullscreen = false
+var fullscreen = true
 
 func _ready():
 	windowModeButton.connect("pressed", self, "on_window_mode_pressed")

@@ -35,7 +35,9 @@ func _unhandled_input(event):
 
 func coin_collected(coin):
 	collected_coins += 1
-	print("gained %s focus time from coin %s collected" % [coin.focus_time_gained, coin])
+	print("collected coin %s" % [coin])
+	if (collected_coins == total_coins):
+		player_won()
 	emit_signal("coin_total_changed", total_coins, collected_coins)
 
 
@@ -52,6 +54,12 @@ func get_valid_spawnable_header_column(tile_map: TileMap):
 	
 	return [most_left, most_right]
 
+func player_won():
+	current_player_node.disable_player_input()
+	current_player_node.disable_enemy_collision()
+	var level_complete_scene_instance = level_complete_scene.instance()
+	add_child(level_complete_scene_instance)
+
 func randomize_enemy_spawner_position(enemy_spawner):
 	var x = randi() % int(enemy_spawnable_area[1].x) + 1
 	var random_cell_position = Vector2(x,0)
@@ -67,7 +75,6 @@ func register_player(player_scene):
 	current_player_node.connect("died", self, "on_player_died", [], CONNECT_DEFERRED)
 	return current_player_node
 
-
 func spawn_player(player_instance):
 	$PlayerSpawnPoint.add_child(player_instance)
 	player_instance.global_position = $PlayerSpawnPoint.global_position
@@ -79,18 +86,6 @@ func on_player_died():
 	var level_failed_scene_instance = level_failed_scene.instance()
 
 	add_child(level_failed_scene_instance)
-
-
-	# var timer = get_tree().create_timer(1.5)
-	# yield(timer, "timeout")
-
-	# var new_player_instance = register_player(playerScene)
-	# spawn_player(new_player_instance)
-
-func on_player_won():
-	current_player_node.disable_player_input()
-	var levelComplete = level_failed_scene.instance()
-	add_child(levelComplete)
 
 func on_enemy_spawned(enemy_spawner, enemy_spawned):
 	print("Enemy %s spawned at %s by %s" % [enemy_spawned, enemy_spawner.global_position ,enemy_spawner])

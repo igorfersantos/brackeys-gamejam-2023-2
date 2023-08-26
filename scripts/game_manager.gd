@@ -8,5 +8,6 @@ func update_bus_volume(busName, volumePercent):
 
 func _ready():
 	if OS.has_feature("editor"):
-		OS.window_fullscreen = false
+		#OS.window_fullscreen = false
 		#update_bus_volume("Master", 0)
+		pass

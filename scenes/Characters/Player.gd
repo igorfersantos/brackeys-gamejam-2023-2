@@ -55,6 +55,8 @@ func _process(delta):
 			process_input_disabled(delta)
 	isStateNew = false
 
+func disable_enemy_collision():
+	$HitboxArea.collision_mask = dashHazardMask
 
 func set_focus_time_left(value):
 	focus_time_left = value
@@ -116,11 +118,11 @@ func process_normal(delta):
 
 func process_dash(delta):
 	if (isStateNew):
+		disable_enemy_collision()
 		$DashAudioPlayer.play()
 		$Visuals/DashParticles.emitting = true
 		$"/root/Helpers".apply_camera_snake(.75)
 		$DashArea/CollisionShape2D.disabled = false
-		$HitboxArea.collision_mask = dashHazardMask
 		$AnimatedSprite.play("jump")
 		var velocityMod = 1 if $AnimatedSprite.flip_h else -1
 
