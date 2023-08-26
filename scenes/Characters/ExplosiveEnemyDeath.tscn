@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://scenes/Characters/ExplosiveEnemyDeath.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Util/RandomAudioStreamPlayer.tscn" type="PackedScene" id=2]
@@ -87,6 +87,30 @@ tracks/5/keys = {
 "method": "drop_bomb"
 } ]
 }
+tracks/6/type = "value"
+tracks/6/path = NodePath("Visuals/Flame:emitting")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0.1, 1.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Visuals/Spark:emitting")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0.1, 1.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
 
 [sub_resource type="CanvasItemMaterial" id=12]
 particles_animation = true
@@ -127,6 +151,48 @@ anim_speed = 0.2
 [sub_resource type="CircleShape2D" id=16]
 radius = 8.0
 
+[sub_resource type="Gradient" id=17]
+offsets = PoolRealArray( 0.215139, 0.601594, 1 )
+colors = PoolColorArray( 0.74902, 0.192157, 0.458824, 1, 0.705882, 0.901961, 0.909804, 1, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture" id=18]
+gradient = SubResource( 17 )
+
+[sub_resource type="Curve" id=21]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.244526, 0.806818 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=20]
+curve = SubResource( 21 )
+
+[sub_resource type="ParticlesMaterial" id=23]
+flag_disable_z = true
+spread = 20.0
+gravity = Vector3( 0, -200, 0 )
+initial_velocity_random = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+damping_random = 0.21
+angle = 100.0
+angle_random = 1.0
+scale = 3.0
+scale_curve = SubResource( 20 )
+color_ramp = SubResource( 18 )
+
+[sub_resource type="ParticlesMaterial" id=22]
+lifetime_randomness = 1.0
+flag_disable_z = true
+direction = Vector3( -1, -1, 0 )
+spread = 20.0
+gravity = Vector3( 0, 600, 0 )
+initial_velocity = 200.0
+initial_velocity_random = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+damping_random = 0.21
+angle = -6.0
+scale_curve = SubResource( 20 )
+color_ramp = SubResource( 18 )
+
 [node name="ExplosiveEnemyDeath" type="RigidBody2D"]
 mass = 0.204082
 script = ExtResource( 1 )
@@ -163,3 +229,27 @@ offset = Vector2( -1, -2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 16 )
+
+[node name="Visuals" type="Node2D" parent="."]
+position = Vector2( 0, -11 )
+
+[node name="Flame" type="Particles2D" parent="Visuals"]
+show_behind_parent = true
+position = Vector2( -5, 1 )
+amount = 6
+lifetime = 0.4
+randomness = 1.0
+fract_delta = false
+visibility_rect = Rect2( -1, -1, 1, 1 )
+local_coords = false
+process_material = SubResource( 23 )
+
+[node name="Spark" type="Particles2D" parent="Visuals"]
+show_behind_parent = true
+position = Vector2( -5, 1 )
+amount = 10
+lifetime = 0.1
+fract_delta = false
+visibility_rect = Rect2( -1, -1, 1, 1 )
+local_coords = false
+process_material = SubResource( 22 )
