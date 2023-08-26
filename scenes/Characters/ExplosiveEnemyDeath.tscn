@@ -208,6 +208,7 @@ color_ramp = SubResource( 18 )
 [node name="ExplosiveEnemyDeath" type="RigidBody2D"]
 collision_layer = 3
 collision_mask = 3
+mode = 2
 mass = 0.204082
 contact_monitor = true
 script = ExtResource( 1 )
@@ -238,13 +239,14 @@ process_material = SubResource( 11 )
 texture = ExtResource( 13 )
 
 [node name="Sprite" type="Sprite" parent="."]
+modulate = Color( 0.958824, 0.793137, 0.793137, 1 )
 position = Vector2( 0, 1 )
+scale = Vector2( 1.02266, 1.02266 )
 texture = ExtResource( 5 )
 offset = Vector2( -1, -2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 16 )
-disabled = true
 
 [node name="Visuals" type="Node2D" parent="."]
 position = Vector2( 0, -11 )
@@ -252,7 +254,6 @@ position = Vector2( 0, -11 )
 [node name="Flame" type="Particles2D" parent="Visuals"]
 show_behind_parent = true
 position = Vector2( -5, 1 )
-emitting = false
 amount = 6
 lifetime = 0.4
 randomness = 1.0
@@ -264,7 +265,6 @@ process_material = SubResource( 23 )
 [node name="Spark" type="Particles2D" parent="Visuals"]
 show_behind_parent = true
 position = Vector2( -5, 1 )
-emitting = false
 amount = 10
 lifetime = 0.1
 fract_delta = false

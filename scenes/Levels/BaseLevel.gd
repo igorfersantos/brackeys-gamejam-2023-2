@@ -76,13 +76,16 @@ func spawn_player(player_instance):
 func on_player_died():
 	current_player_node.queue_free()
 
+	var level_failed_scene_instance = level_failed_scene.instance()
+
+	add_child(level_failed_scene_instance)
 
 
-	var timer = get_tree().create_timer(1.5)
-	yield(timer, "timeout")
+	# var timer = get_tree().create_timer(1.5)
+	# yield(timer, "timeout")
 
-	var new_player_instance = register_player(playerScene)
-	spawn_player(new_player_instance)
+	# var new_player_instance = register_player(playerScene)
+	# spawn_player(new_player_instance)
 
 func on_player_won():
 	current_player_node.disable_player_input()
