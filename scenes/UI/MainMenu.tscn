@@ -1,21 +1,20 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/UI/MenuBackground.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/ui/title.png" type="Texture" id=2]
 [ext_resource path="res://scenes/UI/AnimatedButton.tscn" type="PackedScene" id=3]
 [ext_resource path="res://resources/theme.tres" type="Theme" id=4]
-[ext_resource path="res://resources/destructible_tiles.tres" type="TileSet" id=5]
 [ext_resource path="res://scenes/UI/MainMenu.gd" type="Script" id=7]
 
 [sub_resource type="Animation" id=1]
 resource_name = "bounce"
 length = 0.4
 tracks/0/type = "value"
-tracks/0/path = NodePath("MarginContainer/PanelContainer:rect_scale")
+tracks/0/path = NodePath("MarginContainer/vBoxContainer/MarginContainer/PanelContainer:rect_scale")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/imported = false
-tracks/0/enabled = true
+tracks/0/enabled = false
 tracks/0/keys = {
 "times": PoolRealArray( 0, 0.2, 0.3, 0.4 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
@@ -31,83 +30,98 @@ autoplay = "bounce"
 anims/bounce = SubResource( 1 )
 
 [node name="MenuBackground" parent="." instance=ExtResource( 1 )]
-visible = false
-
-[node name="TileMap" type="TileMap" parent="."]
-tile_set = ExtResource( 5 )
-cell_size = Vector2( 18, 18 )
-show_collision = true
-format = 1
-tile_data = PoolIntArray( 327681, 0, 0, 327682, 0, 0, 327683, 0, 0, 327684, 0, 0, 327685, 0, 0, 327686, 0, 0, 327687, 0, 0, 327688, 0, 0, 327689, 0, 0, 393217, 0, 0, 393218, 0, 0, 393219, 0, 0, 393220, 0, 0, 393221, 0, 0, 393222, 0, 0, 393223, 0, 0, 393224, 0, 0, 393225, 0, 0, 458753, 0, 0, 458754, 0, 0, 458755, 0, 0, 458756, 0, 0, 458757, 0, 0, 458758, 0, 0, 458759, 0, 0, 458760, 0, 0, 458761, 0, 0, 524289, 0, 0, 524290, 0, 0, 524291, 0, 0, 524292, 0, 0, 524293, 0, 0, 524294, 0, 0, 524295, 0, 0, 524296, 0, 0, 524297, 0, 0, 589825, 0, 0, 589826, 0, 0, 589827, 0, 0, 589828, 0, 0, 589829, 0, 0, 589830, 0, 0, 589831, 0, 0, 589832, 0, 0, 589833, 0, 0, 655361, 0, 0, 655362, 0, 0, 655363, 0, 0, 655364, 0, 0, 655365, 0, 0, 655366, 0, 0, 655367, 0, 0, 655368, 0, 0, 655369, 0, 0, 720897, 0, 0, 720898, 0, 0, 720899, 0, 0, 720900, 0, 0, 720901, 0, 0, 720902, 0, 0, 720903, 0, 0, 720904, 0, 0, 720905, 0, 0, 786433, 0, 0, 786434, 0, 0, 786435, 0, 0, 786436, 0, 0, 786437, 0, 0, 786438, 0, 0, 786439, 0, 0, 786440, 0, 0, 786441, 0, 0, 851969, 0, 0, 851970, 0, 0, 851971, 0, 0, 851972, 0, 0, 851973, 0, 0, 851974, 0, 0, 851975, 0, 0, 851976, 0, 0, 851977, 0, 0, 917505, 0, 0, 917506, 0, 0, 917507, 0, 0, 917508, 0, 0, 917509, 0, 0, 917510, 0, 0, 917511, 0, 0, 917512, 0, 0, 917513, 0, 0, 983041, 0, 0, 983042, 0, 0, 983043, 0, 0, 983044, 0, 0, 983045, 0, 0, 983046, 0, 0, 983047, 0, 0, 983048, 0, 0, 983049, 0, 0, 1048577, 0, 0, 1048578, 0, 0, 1048579, 0, 0, 1048580, 0, 0, 1048581, 0, 0, 1048582, 0, 0, 1048583, 0, 0, 1048584, 0, 0, 1048585, 0, 0, 1114113, 0, 0, 1114114, 0, 0, 1114115, 0, 0, 1114116, 0, 0, 1114117, 0, 0, 1114118, 0, 0, 1114119, 0, 0, 1114120, 0, 0, 1114121, 0, 0, 1179649, 0, 0, 1179650, 0, 0, 1179651, 0, 0, 1179652, 0, 0, 1179653, 0, 0, 1179654, 0, 0, 1179655, 0, 0, 1179656, 0, 0, 1179657, 0, 0, 1245185, 0, 0, 1245186, 0, 0, 1245187, 0, 0, 1245188, 0, 0, 1245189, 0, 0, 1245190, 0, 0, 1245191, 0, 0, 1245192, 0, 0, 1245193, 0, 0 )
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 18.0
+margin_top = 18.0
+margin_right = -12.0
+margin_bottom = -18.0
+
+[node name="vBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+margin_right = 450.0
+margin_bottom = 234.0
+custom_constants/separation = 24
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/vBoxContainer"]
+margin_left = 132.0
+margin_top = 50.0
+margin_right = 318.0
+margin_bottom = 85.0
+size_flags_horizontal = 4
+texture = ExtResource( 2 )
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/vBoxContainer"]
+margin_top = 109.0
+margin_right = 450.0
+margin_bottom = 151.0
 theme = ExtResource( 4 )
 
-[node name="ColorRect" type="ColorRect" parent="MarginContainer"]
-margin_right = 480.0
-margin_bottom = 270.0
-color = Color( 0.129412, 0.0470588, 0.211765, 1 )
-
-[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
-margin_left = 175.0
-margin_top = 90.0
-margin_right = 305.0
-margin_bottom = 180.0
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/vBoxContainer/MarginContainer"]
+margin_left = 57.0
+margin_right = 393.0
+margin_bottom = 42.0
 rect_pivot_offset = Vector2( 64, 48 )
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/vBoxContainer/MarginContainer/PanelContainer"]
 margin_left = 1.0
 margin_top = 1.0
-margin_right = 129.0
-margin_bottom = 89.0
+margin_right = 335.0
+margin_bottom = 41.0
 custom_constants/margin_right = 8
 custom_constants/margin_top = 8
 custom_constants/margin_left = 8
 custom_constants/margin_bottom = 8
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer"]
+[node name="VBoxContainer" type="HBoxContainer" parent="MarginContainer/vBoxContainer/MarginContainer/PanelContainer/MarginContainer"]
 margin_left = 8.0
 margin_top = 8.0
-margin_right = 120.0
-margin_bottom = 80.0
+margin_right = 326.0
+margin_bottom = 32.0
 rect_min_size = Vector2( 112, 0 )
 custom_constants/separation = 0
 
-[node name="PlayButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource( 3 )]
-margin_left = 3.0
-margin_right = 109.0
+[node name="PlayButton" parent="MarginContainer/vBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource( 3 )]
 text = "PLAY"
 
-[node name="OptionsButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource( 3 )]
-margin_left = 3.0
-margin_top = 24.0
-margin_right = 109.0
-margin_bottom = 48.0
+[node name="OptionsButton" parent="MarginContainer/vBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource( 3 )]
+margin_left = 106.0
+margin_right = 212.0
 text = "OPTIONS"
 
-[node name="QuitButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource( 3 )]
-margin_left = 3.0
-margin_top = 48.0
-margin_right = 109.0
-margin_bottom = 72.0
+[node name="QuitButton" parent="MarginContainer/vBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource( 3 )]
+margin_left = 212.0
+margin_right = 318.0
 text = "QUIT"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
-margin_right = 480.0
-margin_bottom = 35.0
-size_flags_vertical = 0
-custom_constants/separation = 0
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/vBoxContainer"]
+margin_top = 175.0
+margin_right = 450.0
+margin_bottom = 184.0
+custom_constants/separation = 16
+alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer"]
-margin_left = 147.0
-margin_right = 333.0
-margin_bottom = 35.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 6
-size_flags_vertical = 0
-texture = ExtResource( 2 )
+[node name="Label" type="Label" parent="MarginContainer/vBoxContainer/HBoxContainer"]
+margin_left = 114.0
+margin_right = 201.0
+margin_bottom = 9.0
+theme = ExtResource( 4 )
+text = "Movement: W A S D"
+
+[node name="Label2" type="Label" parent="MarginContainer/vBoxContainer/HBoxContainer"]
+margin_left = 217.0
+margin_right = 271.0
+margin_bottom = 9.0
+theme = ExtResource( 4 )
+text = "Jump: SPACE"
+
+[node name="Label3" type="Label" parent="MarginContainer/vBoxContainer/HBoxContainer"]
+margin_left = 287.0
+margin_right = 335.0
+margin_bottom = 9.0
+theme = ExtResource( 4 )
+text = "Dash: SHIFT"
