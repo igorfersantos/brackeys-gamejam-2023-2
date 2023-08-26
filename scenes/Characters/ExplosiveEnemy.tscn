@@ -2,9 +2,9 @@
 
 [ext_resource path="res://scenes/Characters/ExplosiveEnemy.gd" type="Script" id=1]
 [ext_resource path="res://assets/enemy/bomb_walk5.png" type="Texture" id=2]
+[ext_resource path="res://assets/sounds/sfx/enemy_spawn.ogg" type="AudioStream" id=3]
 [ext_resource path="res://assets/enemy/bomb_walk3.png" type="Texture" id=6]
 [ext_resource path="res://scenes/Characters/ExplosiveEnemyStats.tres" type="Resource" id=7]
-[ext_resource path="res://assets/sounds/chimes.ogg" type="AudioStream" id=8]
 [ext_resource path="res://assets/enemy/bomb_walk1.png" type="Texture" id=9]
 [ext_resource path="res://assets/enemy/bomb_walk4.png" type="Texture" id=10]
 [ext_resource path="res://assets/enemy/bomb_walk6.png" type="Texture" id=11]
@@ -127,9 +127,10 @@ next/spawn = "default"
 
 [node name="Sound" type="AudioStreamPlayer2D" parent="."]
 position = Vector2( 0, -9 )
-stream = ExtResource( 8 )
-volume_db = 6.0
-max_distance = 150.0
+stream = ExtResource( 3 )
+volume_db = 5.0
+autoplay = true
+max_distance = 230.0
 attenuation = 2.0
 bus = "SFX"
 
@@ -138,7 +139,7 @@ bus = "SFX"
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Visuals"]
 frames = SubResource( 1 )
 animation = "run"
-frame = 2
+frame = 3
 playing = true
 offset = Vector2( 0, -3 )
 

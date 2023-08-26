@@ -208,7 +208,9 @@ color_ramp = SubResource( 18 )
 [node name="ExplosiveEnemyDeath" type="RigidBody2D"]
 collision_layer = 3
 collision_mask = 3
-mass = 0.204082
+mode = 2
+mass = 100.0
+gravity_scale = 5.0
 contact_monitor = true
 script = ExtResource( 1 )
 
