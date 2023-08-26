@@ -21,7 +21,7 @@ tracks/0/keys = {
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 1 )
-region = Rect2( 0, 576, 9, 13 )
+region = Rect2( 53.473, 576, 12.4657, 15.8149 )
 
 [sub_resource type="Shader" id=3]
 code = "shader_type canvas_item;

@@ -16,10 +16,8 @@ theme = ExtResource( 2 )
 script = ExtResource( 3 )
 
 [node name="LifesContainer" type="HBoxContainer" parent="."]
-margin_left = 4.0
-margin_top = 4.0
-margin_right = 54.0
-margin_bottom = 16.0
+margin_right = 50.0
+margin_bottom = 12.0
 rect_min_size = Vector2( 50, 12 )
 size_flags_horizontal = 0
 size_flags_vertical = 0

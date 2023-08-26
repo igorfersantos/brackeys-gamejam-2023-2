@@ -1,4 +1,4 @@
-[gd_resource type="AudioBusLayout" load_steps=6 format=2]
+[gd_resource type="AudioBusLayout" load_steps=8 format=2]
 
 [sub_resource type="AudioEffectHighPassFilter" id=2]
 resource_name = "HighPassFilter"
@@ -22,6 +22,14 @@ resource_name = "Chorus"
 dry = 0.5
 wet = 1.0
 voice/1/delay_ms = 50.0
+
+[sub_resource type="AudioEffectDelay" id=7]
+resource_name = "Delay"
+tap1/delay_ms = 500.0
+tap1/pan = 0.4
+
+[sub_resource type="AudioEffectDistortion" id=8]
+resource_name = "Distortion"
 
 [resource]
 bus/0/volume_db = 1.25825
@@ -63,5 +71,9 @@ bus/5/name = "Music"
 bus/5/solo = false
 bus/5/mute = false
 bus/5/bypass_fx = false
-bus/5/volume_db = 0.0
+bus/5/volume_db = -5.93075
 bus/5/send = "Master"
+bus/5/effect/0/effect = SubResource( 7 )
+bus/5/effect/0/enabled = true
+bus/5/effect/1/effect = SubResource( 8 )
+bus/5/effect/1/enabled = true

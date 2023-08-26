@@ -18,7 +18,7 @@ func _ready():
 	update_initial_volume_settings()
 
 func update_display():
-	windowModeButton.text = "WINDOWED" if !fullscreen else "FULLSCREEN"
+	windowModeButton.text = "FULLSCREEN" if !fullscreen else "WINDOWED"
 
 func update_bus_volume(busName, volumePercent):
 	var busIdx = AudioServer.get_bus_index(busName)

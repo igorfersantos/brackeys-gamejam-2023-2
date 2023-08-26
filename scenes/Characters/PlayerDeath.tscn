@@ -34,7 +34,7 @@ tracks/0/path = NodePath("Visuals/Sprite:rotation_degrees")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/imported = false
-tracks/0/enabled = true
+tracks/0/enabled = false
 tracks/0/keys = {
 "times": PoolRealArray( 0, 0.25 ),
 "transitions": PoolRealArray( 1, 1 ),
@@ -46,7 +46,7 @@ tracks/1/path = NodePath("Visuals/Sprite:position")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/imported = false
-tracks/1/enabled = true
+tracks/1/enabled = false
 tracks/1/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.25, 0.3 ),
 "transitions": PoolRealArray( 0.435275, 0.435275, 1, 1, 1 ),
@@ -60,22 +60,22 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.7, 0.85 ),
-"transitions": PoolRealArray( 1, 1, 1, 1e-05, 1, 1 ),
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 1, 1 ), Vector2( 1.3, 1.3 ), Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 0, 0 ) ]
+"values": [ Vector2( 1, 1 ), Vector2( 0, 0 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Visuals/Particles2D:emitting")
+tracks/3/path = NodePath("Visuals/Smoke1:emitting")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.6 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ false, true ]
+"values": [ true ]
 }
 tracks/4/type = "method"
 tracks/4/path = NodePath(".")
@@ -98,7 +98,7 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0.6 ),
+"times": PoolRealArray( 0.1 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [ "player_death" ],
@@ -112,7 +112,7 @@ tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0.6 ),
+"times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
@@ -126,12 +126,12 @@ particles_anim_h_frames = 3
 particles_anim_v_frames = 1
 particles_anim_loop = false
 
-[sub_resource type="Gradient" id=7]
-offsets = PoolRealArray( 0.463415, 1 )
-colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0.572549 )
+[sub_resource type="Gradient" id=9]
+offsets = PoolRealArray( 0.100418, 0.778243, 1 )
+colors = PoolColorArray( 0.277344, 0.277344, 0.277344, 1, 1, 1, 1, 1, 1, 1, 1, 0.572549 )
 
 [sub_resource type="GradientTexture" id=8]
-gradient = SubResource( 7 )
+gradient = SubResource( 9 )
 
 [sub_resource type="Curve" id=5]
 _data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.160428, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.561497, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
@@ -139,7 +139,7 @@ _data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.160428, 1 ), 0.0, 0.0, 0, 
 [sub_resource type="CurveTexture" id=6]
 curve = SubResource( 5 )
 
-[sub_resource type="ParticlesMaterial" id=4]
+[sub_resource type="ParticlesMaterial" id=10]
 lifetime_randomness = 1.0
 emission_shape = 1
 emission_sphere_radius = 7.0
@@ -277,21 +277,21 @@ bus = "PlayerDeath"
 [node name="Visuals" type="Node2D" parent="."]
 
 [node name="Sprite" type="Sprite" parent="Visuals"]
-position = Vector2( 0, -10 )
-rotation = 1.5708
+position = Vector2( 0, -12 )
+scale = Vector2( 1e-05, 1e-05 )
 texture = ExtResource( 7 )
-offset = Vector2( 0, -12 )
+offset = Vector2( 1.5, -5 )
 
-[node name="Particles2D" type="Particles2D" parent="Visuals"]
+[node name="Smoke1" type="Particles2D" parent="Visuals"]
 material = SubResource( 3 )
-position = Vector2( 12, -9 )
+position = Vector2( 0, -9 )
 emitting = false
 amount = 15
 lifetime = 1.5
 one_shot = true
 explosiveness = 0.9
 local_coords = false
-process_material = SubResource( 4 )
+process_material = SubResource( 10 )
 texture = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

@@ -1,8 +1,8 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://scenes/Util/RandomAudioStreamPlayer.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/coin/tile_0151.png" type="Texture" id=2]
-[ext_resource path="res://assets/coin/tile_0152.png" type="Texture" id=3]
+[ext_resource path="res://assets/tiles/gemstone/gemstone6.png" type="Texture" id=2]
+[ext_resource path="res://assets/tiles/gemstone/gemstone1.png" type="Texture" id=3]
 [ext_resource path="res://scenes/Items/Coin.gd" type="Script" id=4]
 [ext_resource path="res://assets/sounds/glass_004.ogg" type="AudioStream" id=5]
 [ext_resource path="res://assets/sounds/impactGlass_heavy_002.ogg" type="AudioStream" id=6]
@@ -10,6 +10,10 @@
 [ext_resource path="res://assets/sounds/impactGlass_heavy_000.ogg" type="AudioStream" id=8]
 [ext_resource path="res://assets/sounds/impactGlass_heavy_001.ogg" type="AudioStream" id=9]
 [ext_resource path="res://assets/sounds/impactGlass_heavy_004.ogg" type="AudioStream" id=10]
+[ext_resource path="res://assets/tiles/gemstone/gemstone5.png" type="Texture" id=11]
+[ext_resource path="res://assets/tiles/gemstone/gemstone4.png" type="Texture" id=12]
+[ext_resource path="res://assets/tiles/gemstone/gemstone3.png" type="Texture" id=13]
+[ext_resource path="res://assets/tiles/gemstone/gemstone2.png" type="Texture" id=14]
 
 [sub_resource type="Animation" id=3]
 resource_name = "idle"
@@ -24,7 +28,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 0, -3 ) ]
+"values": [ Vector2( 0, 0 ), Vector2( 0, -0.8 ) ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -41,7 +45,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.2, 0.4 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, -8 ), Vector2( 0, -16 ), Vector2( 0, -20 ) ]
+"values": [ Vector2( 0, 0 ), Vector2( 0, -16 ), Vector2( 0, -20 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("AnimatedSprite:scale")
@@ -70,15 +74,16 @@ tracks/2/keys = {
 } ]
 }
 
-[sub_resource type="CircleShape2D" id=2]
-radius = 2.0
+[sub_resource type="CapsuleShape2D" id=5]
+radius = 3.0
+height = 4.0
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
+"frames": [ ExtResource( 3 ), ExtResource( 14 ), ExtResource( 13 ), ExtResource( 12 ), ExtResource( 11 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ) ],
 "loop": true,
 "name": "default",
-"speed": 7.0
+"speed": 10.0
 } ]
 
 [node name="Coin" type="Node2D" groups=["coin"]]
@@ -132,11 +137,9 @@ collision_layer = 8388608
 collision_mask = 8388608
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2( 0, -1 )
-shape = SubResource( 2 )
+shape = SubResource( 5 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( 0, -0.954419 )
-scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 1 )
+frame = 2
 playing = true

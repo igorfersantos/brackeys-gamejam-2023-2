@@ -6,9 +6,19 @@
 [node name="LevelUI" type="CanvasLayer"]
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -240.0
+margin_top = 20.0
+margin_right = 240.0
+margin_bottom = 270.0
 mouse_filter = 2
 theme = ExtResource( 2 )
 
 [node name="CoinCounter" parent="MarginContainer" instance=ExtResource( 1 )]
+anchor_left = 0.0
+anchor_right = 0.0
+margin_left = 231.0
+margin_right = 248.0
+margin_bottom = 9.0
+size_flags_horizontal = 4

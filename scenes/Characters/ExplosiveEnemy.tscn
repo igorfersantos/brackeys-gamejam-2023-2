@@ -1,13 +1,17 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://scenes/Characters/ExplosiveEnemy.gd" type="Script" id=1]
-[ext_resource path="res://assets/enemy/bomb_walk1_s.png" type="Texture" id=2]
+[ext_resource path="res://assets/enemy/bomb_walk5.png" type="Texture" id=2]
 [ext_resource path="res://assets/enemy/bomb_spawn2.png" type="Texture" id=3]
 [ext_resource path="res://assets/enemy/bomb_spawn3.png" type="Texture" id=4]
 [ext_resource path="res://assets/enemy/bomb_spawn1.png" type="Texture" id=5]
-[ext_resource path="res://assets/enemy/bomb_walk2_s.png" type="Texture" id=6]
+[ext_resource path="res://assets/enemy/bomb_walk3.png" type="Texture" id=6]
 [ext_resource path="res://scenes/Characters/ExplosiveEnemyStats.tres" type="Resource" id=7]
 [ext_resource path="res://assets/sounds/chimes.ogg" type="AudioStream" id=8]
+[ext_resource path="res://assets/enemy/bomb_walk1.png" type="Texture" id=9]
+[ext_resource path="res://assets/enemy/bomb_walk4.png" type="Texture" id=10]
+[ext_resource path="res://assets/enemy/bomb_walk6.png" type="Texture" id=11]
+[ext_resource path="res://assets/enemy/bomb_walk2.png" type="Texture" id=12]
 
 [sub_resource type="Animation" id=7]
 tracks/0/type = "value"
@@ -89,10 +93,10 @@ tracks/3/keys = {
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 2 ), ExtResource( 6 ) ],
+"frames": [ ExtResource( 9 ), ExtResource( 12 ), ExtResource( 6 ), ExtResource( 10 ), ExtResource( 2 ), ExtResource( 11 ) ],
 "loop": true,
 "name": "run",
-"speed": 3.0
+"speed": 6.0
 }, {
 "frames": [ ExtResource( 5 ), ExtResource( 3 ), ExtResource( 4 ) ],
 "loop": true,
@@ -137,7 +141,7 @@ bus = "SFX"
 position = Vector2( 0, -9 )
 frames = SubResource( 1 )
 animation = "run"
-frame = 1
+frame = 5
 playing = true
 offset = Vector2( 0, -3 )
 
