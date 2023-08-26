@@ -109,12 +109,12 @@ margin_right = 112.0
 margin_bottom = 86.0
 custom_constants/separation = 0
 
-[node name="RestartButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer2" instance=ExtResource( 3 )]
+[node name="PlayAgainButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer2" instance=ExtResource( 3 )]
 margin_left = 3.0
 margin_right = 109.0
 text = "PLAY AGAIN"
 
-[node name="NextLevelButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer2" instance=ExtResource( 3 )]
+[node name="QuitToMenuButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer2" instance=ExtResource( 3 )]
 margin_left = 3.0
 margin_top = 24.0
 margin_right = 109.0
