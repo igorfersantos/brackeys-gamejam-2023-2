@@ -49,6 +49,18 @@ tile_data = PoolIntArray( 0, 0, 0, 10, 0, 0, 65536, 0, 0, 65546, 0, 0, 131072, 0
 position = Vector2( 63, 117 )
 z_index = -1
 
+[node name="Coin7" parent="Collectibles" instance=ExtResource( 1 )]
+position = Vector2( 126, 39 )
+z_index = -1
+
+[node name="Coin8" parent="Collectibles" instance=ExtResource( 1 )]
+position = Vector2( 143, 39 )
+z_index = -1
+
+[node name="Coin9" parent="Collectibles" instance=ExtResource( 1 )]
+position = Vector2( 160, 39 )
+z_index = -1
+
 [node name="Coin2" parent="Collectibles" instance=ExtResource( 1 )]
 position = Vector2( 45, 154 )
 z_index = -1
