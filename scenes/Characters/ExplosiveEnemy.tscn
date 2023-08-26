@@ -101,7 +101,7 @@ animations = [ {
 "speed": 4.0
 } ]
 
-[sub_resource type="CapsuleShape2D" id=10]
+[sub_resource type="CapsuleShape2D" id=24]
 radius = 5.0
 height = 2.0
 
@@ -136,17 +136,16 @@ bus = "SFX"
 [node name="Visuals" type="Node2D" parent="."]
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Visuals"]
-position = Vector2( 0, -9 )
 frames = SubResource( 1 )
 animation = "run"
+frame = 4
 playing = true
 offset = Vector2( 0, -3 )
 
 [node name="Center" type="Position2D" parent="Visuals/AnimatedSprite"]
 
 [node name="BodyCollision" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -10 )
-shape = SubResource( 10 )
+shape = SubResource( 24 )
 
 [node name="GoalDetector" type="Area2D" parent="."]
 visible = false
@@ -154,12 +153,10 @@ collision_layer = 2097152
 collision_mask = 2097152
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GoalDetector"]
-position = Vector2( 0, -9 )
 shape = SubResource( 9 )
 
 [node name="HazardArea" type="Area2D" parent="."]
 visible = false
-position = Vector2( 0, -9 )
 collision_layer = 1050624
 collision_mask = 4194304
 
@@ -167,8 +164,6 @@ collision_mask = 4194304
 shape = SubResource( 4 )
 
 [node name="HitboxArea" type="Area2D" parent="."]
-visible = false
-position = Vector2( 0, -8 )
 collision_layer = 2
 collision_mask = 0
 

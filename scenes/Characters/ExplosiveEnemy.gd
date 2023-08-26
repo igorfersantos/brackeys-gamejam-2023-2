@@ -65,7 +65,6 @@ func kill():
 	emit_signal("dead")
 
 func on_enemy_death_exploded(position):
-	var bomb_pos = $Visuals/AnimatedSprite/Center.global_position
 	get_parent().add_child(bomb_instance)
 	bomb_instance.init(
 		stats.bomb_mask, 

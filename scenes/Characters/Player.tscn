@@ -126,12 +126,6 @@ angle_random = 1.0
 scale = 0.6
 scale_curve = SubResource( 17 )
 
-[sub_resource type="CircleShape2D" id=3]
-radius = 7.0
-
-[sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 5, 7 )
-
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
 "frames": [ ExtResource( 16 ) ],
@@ -152,6 +146,12 @@ animations = [ {
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 5, 7.5 )
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 7.0
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 5, 9 )
 
 [sub_resource type="CapsuleShape2D" id=5]
 radius = 11.0
@@ -319,6 +319,17 @@ one_shot = true
 wait_time = 60.0
 one_shot = true
 
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 0, -9 )
+frames = SubResource( 2 )
+animation = "idle"
+offset = Vector2( 0, -3 )
+
+[node name="BodyCollision" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2( 0, -7.5 )
+shape = SubResource( 1 )
+
 [node name="PickupArea" type="Area2D" parent="."]
 visible = false
 collision_layer = 8388608
@@ -329,25 +340,16 @@ position = Vector2( 0, -8 )
 shape = SubResource( 3 )
 
 [node name="HitboxArea" type="Area2D" parent="."]
-visible = false
+position = Vector2( 0, -9 )
 collision_layer = 4
 collision_mask = 5242880
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxArea"]
-position = Vector2( -1, -7 )
+position = Vector2( 0, 1 )
 shape = SubResource( 4 )
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( 0, -9 )
-frames = SubResource( 2 )
-animation = "idle"
-offset = Vector2( 0, -3 )
-
-[node name="BodyCollision" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -7.5 )
-shape = SubResource( 1 )
-
 [node name="DashArea" type="Area2D" parent="."]
+visible = false
 position = Vector2( -1, -8 )
 collision_layer = 0
 collision_mask = 2
