@@ -6,7 +6,6 @@ signal died
 enum State { NORMAL, DASHING, INPUT_DISABLED }
 
 export(int, LAYERS_2D_PHYSICS) var dashHazardMask
-export var focus_scale = 1.0 setget set_focus_scale
 export var player_stats: Resource
 
 onready var focusParticles = $Visuals/Position2D/FocusParticle
@@ -131,11 +130,6 @@ func get_movement_vector():
 	moveVector.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 	moveVector.y = -1 if Input.is_action_just_pressed("jump") else 0
 	return moveVector
-
-func set_focus_scale(value):
-	focus_scale = value
-	if (is_instance_valid(focusParticles)):
-		focusParticles.process_material.scale = value
 
 func update_animation():
 	var moveVec = get_movement_vector()

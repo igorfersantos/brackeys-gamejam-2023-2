@@ -3,9 +3,9 @@ extends CanvasLayer
 signal back_pressed
 
 onready var backButton = $MarginContainer/PanelContainer/MarginContainer/VBoxContainer/BackButton
-onready var windowModeButton = $MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/WindowModeButton
-onready var musicRangeControl = $MarginContainer/PanelContainer/MarginContainer/VBoxContainer/MusicVolumeContainer/RangeControl
-onready var sfxRangeControl = $MarginContainer/PanelContainer/MarginContainer/VBoxContainer/SFXContainer/RangeControl
+onready var windowModeButton = $MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/WindowModeButton
+onready var musicRangeControl = $MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/MusicVolumeContainer/RangeControl
+onready var sfxRangeControl = $MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/SFXContainer/RangeControl
 
 var fullscreen = false
 
