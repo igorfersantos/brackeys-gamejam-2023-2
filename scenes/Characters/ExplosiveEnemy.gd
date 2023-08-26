@@ -15,7 +15,7 @@ var deg = deg2rad(75)
 
 func _ready():
 	# Note that this will be overwritten in EnemySpawners!
-	direction = stats.startDirection
+	direction = stats.start_direction
 
 	$ExplosionTimer.wait_time = stats.countdown_time
 	$ExplosionTimer.start()

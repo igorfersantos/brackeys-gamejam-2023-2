@@ -5,7 +5,7 @@ script/source = "extends Resource
 
 enum Direction { RIGHT, LEFT }
 
-export(Direction) var startDirection
+export(Direction) var start_direction
 
 export var minSpeed = 10
 export var maxSpeed = 100
@@ -21,7 +21,7 @@ export var countdown_time = 2
 
 [resource]
 script = SubResource( 1 )
-startDirection = 0
+start_direction = 0
 minSpeed = 25
 maxSpeed = 100
 speed = 10

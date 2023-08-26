@@ -1,3 +1,4 @@
+tool
 extends KinematicBody2D
 
 signal died
@@ -5,8 +6,10 @@ signal died
 enum State { NORMAL, DASHING, INPUT_DISABLED }
 
 export(int, LAYERS_2D_PHYSICS) var dashHazardMask
+export var focus_scale = 1.0 setget set_focus_scale
 export var player_stats: Resource
 
+onready var focusParticles = $Visuals/Position2D/FocusParticle
 var playerDeathScene = preload("res://scenes/Characters/PlayerDeath.tscn")
 var footstepParticles = preload("res://scenes/FootstepParticles.tscn")
 
@@ -21,12 +24,18 @@ var defaultHazardMask = 0
 
 
 func _ready():
+	if Engine.editor_hint:
+		return
+
 	$HitboxArea.connect("area_entered", self, "on_hazard_area_entered")
 	$AnimatedSprite.connect("frame_changed", self, "on_animated_sprite_frame_changed")
 	defaultHazardMask = $HitboxArea.collision_mask
-
+	
 
 func _process(delta):
+	if Engine.editor_hint:
+		return
+	$Visuals/Position2D/Focus.rect_rotation += 1
 	match currentState:
 		State.NORMAL:
 			process_normal(delta)
@@ -123,6 +132,10 @@ func get_movement_vector():
 	moveVector.y = -1 if Input.is_action_just_pressed("jump") else 0
 	return moveVector
 
+func set_focus_scale(value):
+	focus_scale = value
+	if (is_instance_valid(focusParticles)):
+		focusParticles.process_material.scale = value
 
 func update_animation():
 	var moveVec = get_movement_vector()

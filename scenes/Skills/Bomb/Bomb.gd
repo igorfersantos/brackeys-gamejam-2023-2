@@ -82,7 +82,7 @@ func explode():
 	emit_signal("exploded")
 
 func on_ray_explosion_hit_cell(cell, tile_id, ray, collider):
-	print("cell: %s tile_id: %s, ray: %s, collider: %s" % [cell, tile_id, ray, collider])
+	#print("cell: %s tile_id: %s, ray: %s, collider: %s" % [cell, tile_id, ray, collider])
 	if tile_id == -1:
 		return
 	

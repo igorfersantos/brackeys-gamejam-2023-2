@@ -121,6 +121,7 @@ click={
 
 [layer_names]
 
+2d_render/layer_3="Celling"
 2d_physics/layer_1="TERRAIN"
 2d_physics/layer_2="ENEMY"
 2d_physics/layer_3="PLAYER"

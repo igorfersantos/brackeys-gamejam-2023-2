@@ -3,6 +3,7 @@
 [sub_resource type="GDScript" id=1]
 script/source = "extends Resource
 
+export var focus = 60
 export var maxLives = 3
 export var canDoubleJump = true
 export var canDash = true
@@ -17,6 +18,7 @@ export var jumpFallGravityMultiplier: float = 1.2
 
 [resource]
 script = SubResource( 1 )
+focus = 60
 maxLives = 3
 canDoubleJump = true
 canDash = true

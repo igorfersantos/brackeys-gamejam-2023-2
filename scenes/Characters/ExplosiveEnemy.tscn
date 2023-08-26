@@ -1,10 +1,7 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://scenes/Characters/ExplosiveEnemy.gd" type="Script" id=1]
 [ext_resource path="res://assets/enemy/bomb_walk5.png" type="Texture" id=2]
-[ext_resource path="res://assets/enemy/bomb_spawn2.png" type="Texture" id=3]
-[ext_resource path="res://assets/enemy/bomb_spawn3.png" type="Texture" id=4]
-[ext_resource path="res://assets/enemy/bomb_spawn1.png" type="Texture" id=5]
 [ext_resource path="res://assets/enemy/bomb_walk3.png" type="Texture" id=6]
 [ext_resource path="res://scenes/Characters/ExplosiveEnemyStats.tres" type="Resource" id=7]
 [ext_resource path="res://assets/sounds/chimes.ogg" type="AudioStream" id=8]
@@ -98,7 +95,7 @@ animations = [ {
 "name": "run",
 "speed": 6.0
 }, {
-"frames": [ ExtResource( 5 ), ExtResource( 3 ), ExtResource( 4 ) ],
+"frames": [ null, null, null ],
 "loop": true,
 "name": "spawn",
 "speed": 4.0
@@ -141,6 +138,7 @@ bus = "SFX"
 position = Vector2( 0, -9 )
 frames = SubResource( 1 )
 animation = "run"
+frame = 5
 playing = true
 offset = Vector2( 0, -3 )
 
