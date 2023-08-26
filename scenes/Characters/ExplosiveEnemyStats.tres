@@ -29,5 +29,5 @@ gravity = 500
 bomb_strength = 2
 bomb_radius = 18
 bomb_raycasts = 200
-bomb_mask = 5
+bomb_mask = 7
 countdown_time = 6

@@ -93,13 +93,13 @@ func on_ray_explosion_hit_cell(cell, tile_id, ray, collider):
 		if affected_tilemap_cell_by_ray[cell]!= ray[0]:
 			return
 
-		print("cell %s with id %s will damaged by the same ray %s" % [cell, tile_id, ray])
+		#print("cell %s with id %s will damaged by the same ray %s" % [cell, tile_id, ray])
 		damage_cell(cell, tile_id)
 
 		affected_tilemap_cell_by_ray[cell].weaken_strengh()
 		return
 
-	print("affected cell %s with id %s by ray %s" % [cell, tile_id, ray])
+	#print("affected cell %s with id %s by ray %s" % [cell, tile_id, ray])
 
 	damage_cell(cell, tile_id)
 	affected_tilemap_cell_by_ray[cell] = (ray[0])

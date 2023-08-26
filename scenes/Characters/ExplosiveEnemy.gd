@@ -47,6 +47,7 @@ func kill():
 	is_dying = true
 
 	var deathInstance = explosiveEnemyDeathScene.instance()
+	deathInstance.connect("enemy_death_exploded", self, "on_enemy_death_exploded")
 	deathInstance.global_position = global_position
 	get_parent().add_child(deathInstance)
 	if (velocity.x > 0 || direction.x > 0):
@@ -62,10 +63,8 @@ func kill():
 	$HitboxArea.monitorable = false
 	
 	emit_signal("dead")
-	yield(bomb_instance, "explosion_ended")
-	queue_free()
 
-func on_bomb_dropped():
+func on_enemy_death_exploded(position):
 	var bomb_pos = $Visuals/AnimatedSprite/Center.global_position
 	get_parent().add_child(bomb_instance)
 	bomb_instance.init(
@@ -73,9 +72,11 @@ func on_bomb_dropped():
 		stats.bomb_strength,
 		stats.bomb_radius,
 		stats.bomb_raycasts, 
-		bomb_pos
+		position
 	)
 	bomb_instance.explode()
+	yield(bomb_instance, "explosion_ended")
+	queue_free()
 
 func on_goal_entered(_area2d):
 	direction *= -1;

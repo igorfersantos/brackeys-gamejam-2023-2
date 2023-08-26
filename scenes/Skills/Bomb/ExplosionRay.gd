@@ -48,9 +48,9 @@ func _physics_process(_delta):
 		emit_signal("ray_explosion_hit_player", collider)
 		return
 	
-	#if (collider.is_in_group("player")):
-		# same thing as in enemy but for player
-		#return
+	if (collider.is_in_group("enemy")):
+		print("hit enemy %s" % [collider.name])
+		set_collision_mask_bit(1, false)
 
 	if (collider.name == "TileMap"):
 		cell = tilemap.world_to_map(get_collision_point() - get_collision_normal())

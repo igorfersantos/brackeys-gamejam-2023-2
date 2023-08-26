@@ -62,5 +62,10 @@ position = Vector2( 145, 7 )
 enemy_scene = ExtResource( 2 )
 enemy_stats = ExtResource( 5 )
 
+[node name="EnemySpawner2" parent="EnemySpawners" instance=ExtResource( 9 )]
+position = Vector2( 145, 7 )
+enemy_scene = ExtResource( 2 )
+enemy_stats = ExtResource( 5 )
+
 [node name="Explosions" type="Node2D" parent="."]
 position = Vector2( 23, 0 )

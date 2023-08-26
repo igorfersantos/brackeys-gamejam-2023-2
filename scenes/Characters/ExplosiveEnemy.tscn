@@ -112,7 +112,7 @@ radius = 7.0
 
 [sub_resource type="CircleShape2D" id=5]
 
-[node name="ExplosiveEnemy" type="KinematicBody2D"]
+[node name="ExplosiveEnemy" type="KinematicBody2D" groups=["enemy"]]
 collision_layer = 0
 collision_mask = 5
 script = ExtResource( 1 )
@@ -139,14 +139,13 @@ bus = "SFX"
 position = Vector2( 0, -9 )
 frames = SubResource( 1 )
 animation = "run"
-frame = 3
 playing = true
 offset = Vector2( 0, -3 )
 
 [node name="Center" type="Position2D" parent="Visuals/AnimatedSprite"]
 
 [node name="BodyCollision" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -7 )
+position = Vector2( 0, -10 )
 shape = SubResource( 10 )
 
 [node name="GoalDetector" type="Area2D" parent="."]

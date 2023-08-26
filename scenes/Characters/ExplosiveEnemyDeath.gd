@@ -1,11 +1,12 @@
-extends Node2D
+extends RigidBody2D
 
-signal bomb_dropped
+signal enemy_death_exploded
 
 
 func _ready():
 	$DeathSoundPlayer1.play()
 # 	$DeathSoundPlayer2.play()
 
+
 func drop_bomb():
-	emit_signal("bomb_dropped", global_position)
+	emit_signal("enemy_death_exploded", global_position)
