@@ -2,7 +2,7 @@ tool
 extends Node2D
 
 signal exploded
-
+signal explosion_ended
 
 var explosion_ray_scene = preload("res://scenes/Skills/Bomb/ExplosionRay.tscn")
 export(int, LAYERS_2D_PHYSICS) var bomb_mask
@@ -106,4 +106,5 @@ func on_ray_explosion_hit_cell(cell, tile_id, ray, collider):
 	affected_tilemap_cell_by_ray[cell].weaken_strengh()
 
 func on_last_ray_explosion_ended():
+	emit_signal("explosion_ended")
 	queue_free()

@@ -57,7 +57,7 @@ func randomize_enemy_spawner_position(enemy_spawner):
 	var cell_world_pos = $TileMap.to_global($TileMap.map_to_world(random_cell_position))
 	# TODO: Make use of the body collision shape radius as margin safety
 	#var body_collision = enemy_spawner.current_enemy_node.get_node("BodyCollision")
-	enemy_spawner.global_position = Vector2(cell_world_pos.x + 5, cell_world_pos.y)
+	enemy_spawner.global_position = Vector2(cell_world_pos.x + 10, cell_world_pos.y)
 	enemy_spawner.start_direction = randi() % 2
 
 

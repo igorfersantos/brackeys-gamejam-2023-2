@@ -114,6 +114,7 @@ radius = 7.0
 
 [node name="ExplosiveEnemy" type="KinematicBody2D"]
 collision_layer = 0
+collision_mask = 5
 script = ExtResource( 1 )
 stats = ExtResource( 7 )
 is_spawning = false
@@ -138,7 +139,7 @@ bus = "SFX"
 position = Vector2( 0, -9 )
 frames = SubResource( 1 )
 animation = "run"
-frame = 5
+frame = 3
 playing = true
 offset = Vector2( 0, -3 )
 

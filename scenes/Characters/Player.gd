@@ -6,11 +6,17 @@ signal died
 enum State { NORMAL, DASHING, INPUT_DISABLED }
 
 export(int, LAYERS_2D_PHYSICS) var dashHazardMask
+export var focus_max_time = 60 
+export var focus_image_max_scale = 1.7
+export var focus_image_min_scale = 0.6
 export var player_stats: Resource
 
-onready var focusParticles = $Visuals/Position2D/FocusParticle
 var playerDeathScene = preload("res://scenes/Characters/PlayerDeath.tscn")
 var footstepParticles = preload("res://scenes/FootstepParticles.tscn")
+
+onready var focus_texture_rect = $Visuals/Position2D/Focus
+onready var focus_timer = $FocusTimer
+var focus_time_left setget set_focus_time_left
 
 var velocity = Vector2.ZERO
 var hasDoubleJump = false
@@ -29,12 +35,17 @@ func _ready():
 	$HitboxArea.connect("area_entered", self, "on_hazard_area_entered")
 	$AnimatedSprite.connect("frame_changed", self, "on_animated_sprite_frame_changed")
 	defaultHazardMask = $HitboxArea.collision_mask
+
+	$FocusTimer.call_deferred("start", focus_max_time)
+	focus_time_left = focus_max_time
 	
 
 func _process(delta):
 	if Engine.editor_hint:
 		return
-	$Visuals/Position2D/Focus.rect_rotation += 1
+	focus_texture_rect.rect_rotation += 1
+	focus_time_left = focus_timer.time_left
+
 	match currentState:
 		State.NORMAL:
 			process_normal(delta)
@@ -44,6 +55,11 @@ func _process(delta):
 			process_input_disabled(delta)
 	isStateNew = false
 
+
+func set_focus_time_left(value):
+	focus_time_left = value
+	#lerp(rect_scale, focus_image_rect_scale, focus/focus_time_left)
+	$Visuals/Position2D/Focus.rect_scale = Vector2()
 
 func change_state(newState):
 	currentState = newState

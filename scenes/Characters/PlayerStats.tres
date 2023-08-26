@@ -4,7 +4,8 @@
 script/source = "extends Resource
 
 export var focus = 60
-export var maxLives = 3
+export var focus_image_max_scale = 1.7
+export var focus_image_min_scale = 0.6
 export var canDoubleJump = true
 export var canDash = true
 export var gravity = 700
@@ -18,8 +19,9 @@ export var jumpFallGravityMultiplier: float = 1.2
 
 [resource]
 script = SubResource( 1 )
-focus = 60
-maxLives = 3
+focus = 100
+focus_image_max_scale = 1.7
+focus_image_min_scale = 0.6
 canDoubleJump = true
 canDash = true
 gravity = 800

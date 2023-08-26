@@ -8,7 +8,7 @@ export var stats: Resource
 export var is_spawning = true
 export var is_dying = false
 
-var bomb_scene = preload("res://scenes/Skills/Bomb/Bomb.tscn")
+var bomb_instance = preload("res://scenes/Skills/Bomb/Bomb.tscn").instance()
 var velocity = Vector2.ZERO
 var direction = Vector2.ZERO
 var deg = deg2rad(75)
@@ -62,22 +62,20 @@ func kill():
 	$HitboxArea.monitorable = false
 	
 	emit_signal("dead")
-	
-	yield(deathInstance, "bomb_dropped")
-	
-	var bomb = bomb_scene.instance()
+	yield(bomb_instance, "explosion_ended")
+	queue_free()
+
+func on_bomb_dropped():
 	var bomb_pos = $Visuals/AnimatedSprite/Center.global_position
-	get_parent().add_child(bomb)
-	bomb.init(
+	get_parent().add_child(bomb_instance)
+	bomb_instance.init(
 		stats.bomb_mask, 
 		stats.bomb_strength,
 		stats.bomb_radius,
 		stats.bomb_raycasts, 
 		bomb_pos
 	)
-	bomb.explode()
-	
-	queue_free()
+	bomb_instance.explode()
 
 func on_goal_entered(_area2d):
 	direction *= -1;
