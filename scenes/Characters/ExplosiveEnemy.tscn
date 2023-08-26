@@ -138,7 +138,7 @@ bus = "SFX"
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Visuals"]
 frames = SubResource( 1 )
 animation = "run"
-frame = 4
+frame = 2
 playing = true
 offset = Vector2( 0, -3 )
 

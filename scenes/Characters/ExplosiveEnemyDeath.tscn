@@ -239,6 +239,7 @@ position = Vector2( 0, -11 )
 [node name="Flame" type="Particles2D" parent="Visuals"]
 show_behind_parent = true
 position = Vector2( -5, 1 )
+emitting = false
 amount = 6
 lifetime = 0.4
 randomness = 1.0
@@ -250,6 +251,7 @@ process_material = SubResource( 23 )
 [node name="Spark" type="Particles2D" parent="Visuals"]
 show_behind_parent = true
 position = Vector2( -5, 1 )
+emitting = false
 amount = 10
 lifetime = 0.1
 fract_delta = false

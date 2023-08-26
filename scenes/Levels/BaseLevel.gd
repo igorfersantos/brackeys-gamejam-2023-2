@@ -4,6 +4,7 @@ signal coin_total_changed(total_coins, collectedCoins)
 
 export(PackedScene) var playerScene
 export(PackedScene) var level_failed_scene 
+export(PackedScene) var level_complete_scene
 
 var pauseScene = preload("res://scenes/UI/PauseMenu.tscn")
 var enemyScene = preload("res://scenes/Characters/ExplosiveEnemy.tscn")
@@ -74,6 +75,8 @@ func spawn_player(player_instance):
 
 func on_player_died():
 	current_player_node.queue_free()
+
+
 
 	var timer = get_tree().create_timer(1.5)
 	yield(timer, "timeout")
